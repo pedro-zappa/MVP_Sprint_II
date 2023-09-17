@@ -1,0 +1,48 @@
+{
+	"name": "DelimitedText1",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureBlobStorage1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "playerank.csv",
+				"container": "soccermetrics"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "goalScored",
+				"type": "String"
+			},
+			{
+				"name": "playerankScore",
+				"type": "String"
+			},
+			{
+				"name": "matchId",
+				"type": "String"
+			},
+			{
+				"name": "playerId",
+				"type": "String"
+			},
+			{
+				"name": "roleCluster",
+				"type": "String"
+			},
+			{
+				"name": "minutesPlayed",
+				"type": "String"
+			}
+		]
+	}
+}

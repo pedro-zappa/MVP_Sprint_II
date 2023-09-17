@@ -1,0 +1,180 @@
+{
+	"name": "DelimitedText8",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureBlobStorage1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "matches_World_Cup.csv",
+				"container": "soccermetrics"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "status",
+				"type": "String"
+			},
+			{
+				"name": "roundId",
+				"type": "String"
+			},
+			{
+				"name": "gameweek",
+				"type": "String"
+			},
+			{
+				"name": "teamsData",
+				"type": "String"
+			},
+			{
+				"name": "seasonId",
+				"type": "String"
+			},
+			{
+				"name": "dateutc",
+				"type": "String"
+			},
+			{
+				"name": "winner",
+				"type": "String"
+			},
+			{
+				"name": "venue",
+				"type": "String"
+			},
+			{
+				"name": "wyId",
+				"type": "String"
+			},
+			{
+				"name": "label",
+				"type": "String"
+			},
+			{
+				"name": "date",
+				"type": "String"
+			},
+			{
+				"name": "groupName",
+				"type": "String"
+			},
+			{
+				"name": "referees",
+				"type": "String"
+			},
+			{
+				"name": "duration",
+				"type": "String"
+			},
+			{
+				"name": "competitionId",
+				"type": "String"
+			},
+			{
+				"name": "team1.scoreET",
+				"type": "String"
+			},
+			{
+				"name": "team1.coachId",
+				"type": "String"
+			},
+			{
+				"name": "team1.side",
+				"type": "String"
+			},
+			{
+				"name": "team1.teamId",
+				"type": "String"
+			},
+			{
+				"name": "team1.score",
+				"type": "String"
+			},
+			{
+				"name": "team1.scoreP",
+				"type": "String"
+			},
+			{
+				"name": "team1.hasFormation",
+				"type": "String"
+			},
+			{
+				"name": "team1.formation",
+				"type": "String"
+			},
+			{
+				"name": "team1.scoreHT",
+				"type": "String"
+			},
+			{
+				"name": "team1.formation.bench",
+				"type": "String"
+			},
+			{
+				"name": "team1.formation.lineup",
+				"type": "String"
+			},
+			{
+				"name": "team1.formation.substitutions",
+				"type": "String"
+			},
+			{
+				"name": "team2.scoreET",
+				"type": "String"
+			},
+			{
+				"name": "team2.coachId",
+				"type": "String"
+			},
+			{
+				"name": "team2.side",
+				"type": "String"
+			},
+			{
+				"name": "team2.teamId",
+				"type": "String"
+			},
+			{
+				"name": "team2.score",
+				"type": "String"
+			},
+			{
+				"name": "team2.scoreP",
+				"type": "String"
+			},
+			{
+				"name": "team2.hasFormation",
+				"type": "String"
+			},
+			{
+				"name": "team2.formation",
+				"type": "String"
+			},
+			{
+				"name": "team2.scoreHT",
+				"type": "String"
+			},
+			{
+				"name": "team2.formation.bench",
+				"type": "String"
+			},
+			{
+				"name": "team2.formation.lineup",
+				"type": "String"
+			},
+			{
+				"name": "team2.formation.substitutions",
+				"type": "String"
+			}
+		]
+	}
+}

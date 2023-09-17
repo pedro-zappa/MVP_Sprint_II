@@ -1,0 +1,80 @@
+{
+	"name": "DelimitedText4",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureBlobStorage1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "players.csv",
+				"container": "soccermetrics"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "passportArea",
+				"type": "String"
+			},
+			{
+				"name": "weight",
+				"type": "String"
+			},
+			{
+				"name": "firstName",
+				"type": "String"
+			},
+			{
+				"name": "middleName",
+				"type": "String"
+			},
+			{
+				"name": "lastName",
+				"type": "String"
+			},
+			{
+				"name": "currentTeamId",
+				"type": "String"
+			},
+			{
+				"name": "birthDate",
+				"type": "String"
+			},
+			{
+				"name": "height",
+				"type": "String"
+			},
+			{
+				"name": "role",
+				"type": "String"
+			},
+			{
+				"name": "birthArea",
+				"type": "String"
+			},
+			{
+				"name": "wyId",
+				"type": "String"
+			},
+			{
+				"name": "foot",
+				"type": "String"
+			},
+			{
+				"name": "shortName",
+				"type": "String"
+			},
+			{
+				"name": "currentNationalTeamId",
+				"type": "String"
+			}
+		]
+	}
+}

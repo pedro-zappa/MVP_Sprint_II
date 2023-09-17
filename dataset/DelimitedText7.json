@@ -1,0 +1,92 @@
+{
+	"name": "DelimitedText7",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureBlobStorage1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "events_World_Cup.csv",
+				"container": "soccermetrics"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "eventId",
+				"type": "String"
+			},
+			{
+				"name": "subEventName",
+				"type": "String"
+			},
+			{
+				"name": "tags",
+				"type": "String"
+			},
+			{
+				"name": "playerId",
+				"type": "String"
+			},
+			{
+				"name": "positions",
+				"type": "String"
+			},
+			{
+				"name": "matchId",
+				"type": "String"
+			},
+			{
+				"name": "eventName",
+				"type": "String"
+			},
+			{
+				"name": "teamId",
+				"type": "String"
+			},
+			{
+				"name": "matchPeriod",
+				"type": "String"
+			},
+			{
+				"name": "eventSec",
+				"type": "String"
+			},
+			{
+				"name": "subEventId",
+				"type": "String"
+			},
+			{
+				"name": "id",
+				"type": "String"
+			},
+			{
+				"name": "tagsList",
+				"type": "String"
+			},
+			{
+				"name": "pos_orig_y",
+				"type": "String"
+			},
+			{
+				"name": "pos_orig_x",
+				"type": "String"
+			},
+			{
+				"name": "pos_dest_y",
+				"type": "String"
+			},
+			{
+				"name": "pos_dest_x",
+				"type": "String"
+			}
+		]
+	}
+}

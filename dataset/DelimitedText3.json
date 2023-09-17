@@ -1,0 +1,80 @@
+{
+	"name": "DelimitedText3",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureBlobStorage1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "referees.csv",
+				"container": "soccermetrics"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "wyId",
+				"type": "String"
+			},
+			{
+				"name": "shortName",
+				"type": "String"
+			},
+			{
+				"name": "firstName",
+				"type": "String"
+			},
+			{
+				"name": "middleName",
+				"type": "String"
+			},
+			{
+				"name": "lastName",
+				"type": "String"
+			},
+			{
+				"name": "birthDate",
+				"type": "String"
+			},
+			{
+				"name": "birthArea.id",
+				"type": "String"
+			},
+			{
+				"name": "birthArea.alpha2code",
+				"type": "String"
+			},
+			{
+				"name": "birthArea.alpha3code",
+				"type": "String"
+			},
+			{
+				"name": "birthArea.name",
+				"type": "String"
+			},
+			{
+				"name": "passportArea.id",
+				"type": "String"
+			},
+			{
+				"name": "passportArea.alpha2code",
+				"type": "String"
+			},
+			{
+				"name": "passportArea.alpha3code",
+				"type": "String"
+			},
+			{
+				"name": "passportArea.name",
+				"type": "String"
+			}
+		]
+	}
+}
