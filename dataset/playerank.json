@@ -1,0 +1,42 @@
+{
+	"name": "playerank",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureBlobStorage1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "playerank.json",
+				"container": "soccermetrics"
+			}
+		},
+		"schema": {
+			"type": "object",
+			"properties": {
+				"goalScored": {
+					"type": "integer"
+				},
+				"playerankScore": {
+					"type": "number"
+				},
+				"matchId": {
+					"type": "integer"
+				},
+				"playerId": {
+					"type": "integer"
+				},
+				"roleCluster": {
+					"type": "string"
+				},
+				"minutesPlayed": {
+					"type": "integer"
+				}
+			}
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

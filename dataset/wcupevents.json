@@ -1,0 +1,79 @@
+{
+	"name": "wcupevents",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureBlobStorage1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "events_World_Cup.json",
+				"container": "soccermetrics"
+			}
+		},
+		"schema": {
+			"type": "object",
+			"properties": {
+				"eventId": {
+					"type": "integer"
+				},
+				"subEventName": {
+					"type": "string"
+				},
+				"tags": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"properties": {
+							"id": {
+								"type": "integer"
+							}
+						}
+					}
+				},
+				"playerId": {
+					"type": "integer"
+				},
+				"positions": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"properties": {
+							"y": {
+								"type": "integer"
+							},
+							"x": {
+								"type": "integer"
+							}
+						}
+					}
+				},
+				"matchId": {
+					"type": "integer"
+				},
+				"eventName": {
+					"type": "string"
+				},
+				"teamId": {
+					"type": "integer"
+				},
+				"matchPeriod": {
+					"type": "string"
+				},
+				"eventSec": {
+					"type": "number"
+				},
+				"subEventId": {
+					"type": "integer"
+				},
+				"id": {
+					"type": "integer"
+				}
+			}
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

@@ -1,0 +1,396 @@
+{
+	"name": "soccer",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "Json1",
+						"type": "DatasetReference"
+					},
+					"name": "fwcupmaches",
+					"description": "This dataset describes all the matches made available. Each match is a document consisting of the following fields:\n\n- competitionId: the identifier of the competition to which the match belongs to. It is a integer and refers to the field \"wyId\" of the competition document;\n- date and dateutc: the former specifies date and time when the match starts in explicit format (e.g., May 20, 2018 at 8:45:00 PM GMT+2), the latter contains the same information but in the compact format YYYY-MM-DD hh:mm:ss;\n- duration: the duration of the match. It can be \"Regular\" (matches of regular duration of 90 minutes + stoppage time), \"ExtraTime\" (matches with supplementary times, as it may happen for matches in continental or international competitions), or \"Penalities\" (matches which end at penalty kicks, as it may happen for continental or international competitions);\n- gameweek: the week of the league, starting from the beginning of the league;\n- label: contains the name of the two clubs and the result of the match (e.g., \"Lazio - Internazionale, 2 - 3\");\n- roundID: indicates the match-day of the competition to which the match belongs to. During a competition for soccer clubs, each of the participating clubs plays against each of the other clubs twice, once at home and once away. The matches are organized in match-days: all the matches in match-day i are played before the matches in match-day i + 1, even tough some matches can be anticipated or postponed to facilitate players and clubs participating in Continental or Intercontinental competitions. During a competition for national teams, the \"roundID\" indicates the stage of the competition (eliminatory round, round of 16, quarter finals, semifinals, final);\n- seasonId: indicates the season of the match;\n- status: it can be \"Played\" (the match has officially finished), \"Cancelled\" (the match has been canceled for some reason), \"Postponed\" (the match has been postponed and no new date and time is available yet) or \"Suspended\" (the match has been suspended and no new date and time is available yet);\n- venue: the stadium where the match was held (e.g., \"Stadio Olimpico\");\n- winner: the identifier of the team which won the game, or 0 if the match ended with a draw;\n- wyId: the identifier of the match, assigned by Wyscout;\n- teamsData: it contains several subfields describing information about each team that is playing that match: such as lineup, bench composition, list of substitutions, coach and scores:\n- hasFormation: it has value 0 if no formation (lineups and benches) is present, and 1 otherwise;\n- score: the number of goals scored by the team during the match (not counting penalties);\n- scoreET: the number of goals scored by the team during the match, including the extra time (not counting penalties);\n- scoreHT: the number of goals scored by the team during the first half of the match;\n- scoreP: the total number of goals scored by the team after the penalties;\n- side: the team side in the match (it can be \"home\" or \"away\");\n- teamId: the identifier of the team;\n- coachId: the identifier of the team's coach;\n- bench: the list of the team's players that started the match in the bench and some basic statistics about their performance during the match (goals, own goals, cards);\n- lineup: the list of the team's players in the starting lineup and some basic statistics about their performance during the match (goals, own goals, cards);\n- substitutions: the list of team's substitutions during the match, describing the players involved and the minute of the substitution."
+				},
+				{
+					"dataset": {
+						"referenceName": "wcupevents",
+						"type": "DatasetReference"
+					},
+					"name": "fwcupevents",
+					"description": "This dataset describes all the events that occur during each match. Each event refers to a ball touch and contains the following information:\n\n- eventId: the identifier of the event's type. Each eventId is associated with an event name (see next point);\n- eventName: tteamIdhe name of the event's type. There are seven types of events: pass, foul, shot, duel, free kick, offside and touch;\n- subEventId: the identifier of the subevent's type. Each subEventId is associated with a subevent name (see next point);\n- subEventName: the name of the subevent's type. Each event type is associated with a different set of subevent types;\n- tags: a list of event tags, each one describes additional information about the event (e.g., accurate). Each event type is associated with a different set of tags;\n- eventSec: the time when the event occurs (in seconds since the beginning of the current half of the match);\n- id: a unique identifier of the event;\n- matchId: the identifier of the match the event refers to. The identifier refers to the field \"wyId\" in the match dataset;\n- matchPeriod: the period of the match. It can be \"1H\" (first half of the match), \"2H\" (second half of the match), \"E1\" (first extra time), \"E2\" (second extra time) or \"P\" (penalties time);\n- playerId: the identifier of the player who generated the event. The identifier refers to the field \"wyId\" in a player dataset;\n- positions: the origin and destination positions associated with the event. Each position is a pair of coordinates (x, y). The x and y coordinates are always in the range [0, 100] and indicate the percentage of the field from the perspective of the attacking team. In particular, the value of the x coordinate indicates the event's nearness (in percentage) to the opponent's goal, while the value of the y coordinates indicates the event's nearness (in percentage) to the right side of the field;\n- teamId: the identifier of the player's team. The identifier refers to the field \"wyId\" in the team dataset."
+				},
+				{
+					"dataset": {
+						"referenceName": "teams",
+						"type": "DatasetReference"
+					},
+					"name": "dteams",
+					"description": "This dataset describes all the soccer teams in seven prominent soccer competitions (Italian, Spanish, German, French and English first divisions, World Cup 2018, European Cup 2016). It consists of the following fields:\n\n- city: the city where the team is located. For national teams it is the capital of the country;\n- name: the common name of the team;\n- area: information about the geographic area associated with the team;\n- wyId: the identifier of the team, assigned by Wyscout;\n- officialName: the official name of the team (e.g., Juventus FC);\n- type: the type of the team. It is \"club\" for teams in the competitions for clubs and \"national\" for the teams in international competitions;"
+				},
+				{
+					"dataset": {
+						"referenceName": "competitions",
+						"type": "DatasetReference"
+					},
+					"name": "dcompetitions",
+					"description": "This dataset describes seven major soccer competitions (Italian, Spanish, German, French, English first divisions, World cup 2018, European cup 2016). Each competition is a document consisting of the following fields:\n\narea: it denotes the geographic area associated with the league as a sub-document, using the ISO 3166-1 specification (https://www.iso.org/iso-3166-country-codes.html);\nformat: the format of the competition. All competitions for clubs have value \"Domestic league\". The competitions for national teams have value \"International cup\";\n- name: the official name of the competition (e.g., Italian first division, Spanish first division, World Cup, etc.);\n- type: the typology of the competition. It is \"club\" for the competitions for clubs and \"international\" for the competitions for national teams (World Cup 2018, European Cup 2016);\n- wyId: the unique identifier of the competition, assigned by Wyscout."
+				},
+				{
+					"dataset": {
+						"referenceName": "players",
+						"type": "DatasetReference"
+					},
+					"name": "dplayers",
+					"description": "This dataset describes all players of the teams playing in seven national and international soccer competitions (Italian, Spanish, French, German, English first divisions, World Cup 2018, European Cup 2016). Each competition consists of the following fields:\n\n- birthArea: geographic information about the player's birth area;\n- birthDate: the birth date of the player, in the format \"YYYY-MM-DD\";\n- currentNationalTeamId: the identifier of the national team where the players currently plays;\n- currentTeamId: the identifier of the team where the player plays for. The identifier refers to the field \"wyId\" in a team document;\n- firstName: the first name of the player;\n- lastName: the last name of the player;\n- foot: the preferred foot of the player;\n- height: the height of the player (in centimeters);\n- middleName: the middle name (if any) of the player;\n- passportArea: the geographic area associated with the player's current passport;\n- role: the main role of the player. It is a subdocument containing the role's name and two abbreviations of it;\n- shortName2: the short name of the player;\n- weight: the weight of the player (in kilograms);\n- wyId: the identifier of the player, assigned by Wyscout."
+				},
+				{
+					"dataset": {
+						"referenceName": "referees",
+						"type": "DatasetReference"
+					},
+					"name": "dreferees",
+					"description": "The referees data set describes all referees in the national and international competitions we make available. It consists of the following fields:\n- wyId: the identifier of the referee, assigned by Wyscout.\n- shortName: the short name of the referee;\n- firstName: the first name of the referee;\n- middleName: the middle name (if any) of the referee;\n- lastName: the last name of the referee;\n- birthDate: the birth date of the referee, in the format \"YYYY-MM-DD\";\n- birthArea: geographic information about the referee's birth area;\n- passportArea: the geographic area associated with the referee's current passport;"
+				},
+				{
+					"dataset": {
+						"referenceName": "coaches",
+						"type": "DatasetReference"
+					},
+					"name": "dcoaches",
+					"description": "The coaches data set describes all coaches of the clubs and the national teams of the seven competitions we make available. It consists of the following fields:\n- wyId: the identifier of the coach, assigned by Wyscout.\n- shortName: the short name of the coach;\n- firstName: the first name of the coach;\n- middleName: the middle name (if any) of the coach;\n- lastName: the last name of the coach;\n- birthDate: the birth date of the coach, in the format \"YYYY-MM-DD\";\n- birthArea: geographic information about the coach's birth area;\n- passportArea: the geographic area associated with the referee's current passport;\n- currentTeamId: the identifier of the coach's team. The identifier refers to the field \"wyId\" in a team document."
+				},
+				{
+					"dataset": {
+						"referenceName": "playerank",
+						"type": "DatasetReference"
+					},
+					"name": "dplayerank",
+					"description": "The PlayeRank score of the players in the matches they played. The PlayeRank score indicate, in a range from 0 to 1, how good was that player in that match (0 unforgettably bad, 1 amazing). The score have been computed using the PlayeRank framework, if you use these data please cite the following paper: https://arxiv.org/abs/1802.04987.\n\nEach document in the json file has the following fields:\n\n- goalScored: the number of goals scored by the player in the match\n- playerankScore: the PlayeRank score of the player in the match\n- matchId: the identifier of the match\n- playerId: the identifier of the player\n- roleCluster: the role of player in the match, as computed by the PlayeRank framework\n- minutesPlayed: the minutes played by the player in the match"
+				},
+				{
+					"dataset": {
+						"referenceName": "tags2name",
+						"type": "DatasetReference"
+					},
+					"name": "dtags2names",
+					"description": "Mapping of tag identifiers to tag names."
+				},
+				{
+					"dataset": {
+						"referenceName": "eventid2name",
+						"type": "DatasetReference"
+					},
+					"name": "deventid2names",
+					"description": "Mapping of event identifiers to event names."
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "CosmosDbNoSqlContainer1",
+						"type": "DatasetReference"
+					},
+					"name": "wcupmatches"
+				},
+				{
+					"dataset": {
+						"referenceName": "CosmosDbNoSqlContainer1",
+						"type": "DatasetReference"
+					},
+					"name": "wcupevents"
+				},
+				{
+					"dataset": {
+						"referenceName": "CosmosDbNoSqlContainer1",
+						"type": "DatasetReference"
+					},
+					"name": "teams"
+				},
+				{
+					"dataset": {
+						"referenceName": "CosmosDbNoSqlContainer1",
+						"type": "DatasetReference"
+					},
+					"name": "competitions"
+				},
+				{
+					"dataset": {
+						"referenceName": "CosmosDbNoSqlContainer1",
+						"type": "DatasetReference"
+					},
+					"name": "players"
+				},
+				{
+					"dataset": {
+						"referenceName": "CosmosDbNoSqlContainer1",
+						"type": "DatasetReference"
+					},
+					"name": "referee"
+				},
+				{
+					"dataset": {
+						"referenceName": "CosmosDbNoSqlContainer1",
+						"type": "DatasetReference"
+					},
+					"name": "coaches"
+				},
+				{
+					"dataset": {
+						"referenceName": "CosmosDbNoSqlContainer1",
+						"type": "DatasetReference"
+					},
+					"name": "playerank"
+				},
+				{
+					"dataset": {
+						"referenceName": "CosmosDbNoSqlContainer1",
+						"type": "DatasetReference"
+					},
+					"name": "tag2names"
+				},
+				{
+					"dataset": {
+						"referenceName": "CosmosDbNoSqlContainer1",
+						"type": "DatasetReference"
+					},
+					"name": "eventid2names"
+				}
+			],
+			"transformations": [],
+			"scriptLines": [
+				"source(output(",
+				"          status as string,",
+				"          roundId as integer,",
+				"          gameweek as integer,",
+				"          teamsData as ({2413} as (scoreET as integer, coachId as integer, side as string, teamId as integer, score as integer, scoreP as integer, hasFormation as integer, formation as (bench as (playerId as integer, assists as string, goals as string, ownGoals as string, redCards as string, yellowCards as string)[], lineup as (playerId as integer, assists as string, goals as string, ownGoals as string, redCards as string, yellowCards as string)[], substitutions as (playerIn as integer, assists as string, playerOut as integer, minute as integer)[]), scoreHT as integer), {4418} as (scoreET as integer, coachId as integer, side as string, teamId as integer, score as integer, scoreP as integer, hasFormation as integer, formation as (bench as (playerId as integer, assists as string, goals as string, ownGoals as string, redCards as string, yellowCards as string)[], lineup as (playerId as integer, assists as string, goals as string, ownGoals as string, redCards as string, yellowCards as string)[], substitutions as (playerIn as integer, assists as string, playerOut as integer, minute as integer)[]), scoreHT as integer), {5629} as (scoreET as integer, coachId as integer, side as string, teamId as integer, score as integer, scoreP as integer, hasFormation as integer, formation as (bench as (playerId as integer, assists as string, goals as string, ownGoals as string, redCards as string, yellowCards as string)[], lineup as (playerId as integer, assists as string, goals as string, ownGoals as string, redCards as string, yellowCards as string)[], substitutions as (playerIn as integer, assists as string, playerOut as integer, minute as integer)[]), scoreHT as integer), {6380} as (scoreET as integer, coachId as integer, side as string, teamId as integer, score as integer, scoreP as integer, hasFormation as integer, formation as (bench as (playerId as integer, assists as string, goals as string, ownGoals as string, redCards as string, yellowCards as string)[], lineup as (playerId as integer, assists as string, goals as string, ownGoals as string, redCards as string, yellowCards as string)[], substitutions as (playerIn as integer, assists as string, playerOut as integer, minute as integer)[]), scoreHT as integer), {6697} as (scoreET as integer, coachId as integer, side as string, teamId as integer, score as integer, scoreP as integer, hasFormation as integer, formation as (bench as (playerId as integer, assists as string, goals as string, ownGoals as string, redCards as string, yellowCards as string)[], lineup as (playerId as integer, assists as string, goals as string, ownGoals as string, redCards as string, yellowCards as string)[], substitutions as (playerIn as integer, assists as string, playerOut as integer, minute as integer)[]), scoreHT as integer), {7047} as (scoreET as integer, coachId as integer, side as string, teamId as integer, score as integer, scoreP as integer, hasFormation as integer, formation as (bench as (playerId as integer, assists as string, goals as string, ownGoals as string, redCards as string, yellowCards as string)[], lineup as (playerId as integer, assists as string, goals as string, ownGoals as string, redCards as string, yellowCards as string)[], substitutions as (playerIn as integer, assists as string, playerOut as integer, minute as integer)[]), scoreHT as integer), {9598} as (scoreET as integer, coachId as integer, side as string, teamId as integer, score as integer, scoreP as integer, hasFormation as integer, formation as (bench as (playerId as integer, assists as string, goals as string, ownGoals as string, redCards as string, yellowCards as string)[], lineup as (playerId as integer, assists as string, goals as string, ownGoals as string, redCards as string, yellowCards as string)[], substitutions as (playerIn as integer, assists as string, playerOut as integer, minute as integer)[]), scoreHT as integer), {12430} as (scoreET as integer, coachId as integer, side as string, teamId as integer, score as integer, scoreP as integer, hasFormation as integer, formation as (bench as (playerId as integer, assists as string, goals as string, ownGoals as string, redCards as string, yellowCards as string)[], lineup as (playerId as integer, assists as string, goals as string, ownGoals as string, redCards as string, yellowCards as string)[], substitutions as (playerIn as integer, assists as string, playerOut as integer, minute as integer)[]), scoreHT as integer), {14358} as (scoreET as integer, coachId as integer, side as string, teamId as integer, score as integer, scoreP as integer, hasFormation as integer, formation as (bench as (playerId as integer, assists as string, goals as string, ownGoals as string, redCards as string, yellowCards as string)[], lineup as (playerId as integer, assists as string, goals as string, ownGoals as string, redCards as string, yellowCards as string)[], substitutions as (playerIn as integer, assists as string, playerOut as integer, minute as integer)[]), scoreHT as integer), {15670} as (scoreET as integer, coachId as integer, side as string, teamId as integer, score as integer, scoreP as integer, hasFormation as integer, formation as (bench as (playerId as integer, assists as string, goals as string, ownGoals as string, redCards as string, yellowCards as string)[], lineup as (playerId as integer, assists as string, goals as string, ownGoals as string, redCards as string, yellowCards as string)[], substitutions as (playerIn as integer, assists as string, playerOut as integer, minute as integer)[]), scoreHT as integer)),",
+				"          seasonId as integer,",
+				"          dateutc as string,",
+				"          winner as integer,",
+				"          venue as string,",
+				"          wyId as integer,",
+				"          label as string,",
+				"          date as string,",
+				"          groupName as string,",
+				"          referees as (refereeId as integer, role as string)[],",
+				"          duration as string,",
+				"          competitionId as integer",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     limit: 100,",
+				"     ignoreNoFilesFound: false,",
+				"     documentForm: 'documentPerLine') ~> fwcupmaches",
+				"source(output(",
+				"          eventId as integer,",
+				"          subEventName as string,",
+				"          tags as (id as integer)[],",
+				"          playerId as integer,",
+				"          positions as (y as integer, x as integer)[],",
+				"          matchId as integer,",
+				"          eventName as string,",
+				"          teamId as integer,",
+				"          matchPeriod as string,",
+				"          eventSec as double,",
+				"          subEventId as integer,",
+				"          id as integer",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false,",
+				"     documentForm: 'documentPerLine') ~> fwcupevents",
+				"source(output(",
+				"          city as string,",
+				"          name as string,",
+				"          wyId as integer,",
+				"          officialName as string,",
+				"          area as (name as string, id as string, alpha3code as string, alpha2code as string),",
+				"          type as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false,",
+				"     documentForm: 'documentPerLine') ~> dteams",
+				"source(output(",
+				"          name as string,",
+				"          wyId as integer,",
+				"          format as string,",
+				"          area as (name as string, id as string, alpha3code as string, alpha2code as string),",
+				"          type as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false,",
+				"     documentForm: 'documentPerLine') ~> dcompetitions",
+				"source(output(",
+				"          passportArea as (name as string, id as string, alpha3code as string, alpha2code as string),",
+				"          weight as integer,",
+				"          firstName as string,",
+				"          middleName as string,",
+				"          lastName as string,",
+				"          currentTeamId as integer,",
+				"          birthDate as string,",
+				"          height as integer,",
+				"          role as (code2 as string, code3 as string, name as string),",
+				"          birthArea as (name as string, id as string, alpha3code as string, alpha2code as string),",
+				"          wyId as integer,",
+				"          foot as string,",
+				"          shortName as string,",
+				"          currentNationalTeamId as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false,",
+				"     documentForm: 'documentPerLine') ~> dplayers",
+				"source(output(",
+				"          wyId as integer,",
+				"          shortName as string,",
+				"          firstName as string,",
+				"          middleName as string,",
+				"          lastName as string,",
+				"          birthDate as string,",
+				"          birthArea as (id as integer, alpha2code as string, alpha3code as string, name as string),",
+				"          passportArea as (id as integer, alpha2code as string, alpha3code as string, name as string)",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false,",
+				"     documentForm: 'documentPerLine') ~> dreferees",
+				"source(output(",
+				"          wyId as integer,",
+				"          shortName as string,",
+				"          firstName as string,",
+				"          middleName as string,",
+				"          lastName as string,",
+				"          birthDate as string,",
+				"          birthArea as (id as integer, alpha2code as string, alpha3code as string, name as string),",
+				"          passportArea as (id as integer, alpha2code as string, alpha3code as string, name as string),",
+				"          currentTeamId as integer",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false,",
+				"     documentForm: 'documentPerLine') ~> dcoaches",
+				"source(output(",
+				"          goalScored as integer,",
+				"          playerankScore as double,",
+				"          matchId as integer,",
+				"          playerId as integer,",
+				"          roleCluster as string,",
+				"          minutesPlayed as integer",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false,",
+				"     documentForm: 'documentPerLine') ~> dplayerank",
+				"source(output(",
+				"          Tag as short,",
+				"          Label as string,",
+				"          Description as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> dtags2names",
+				"source(output(",
+				"          event as short,",
+				"          subevent as short,",
+				"          event_label as string,",
+				"          subevent_label as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> deventid2names",
+				"fwcupmaches sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     deletable:false,",
+				"     insertable:true,",
+				"     updateable:false,",
+				"     upsertable:false,",
+				"     format: 'document',",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> wcupmatches",
+				"fwcupevents sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     deletable:false,",
+				"     insertable:true,",
+				"     updateable:false,",
+				"     upsertable:false,",
+				"     format: 'document',",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> wcupevents",
+				"dteams sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     deletable:false,",
+				"     insertable:true,",
+				"     updateable:false,",
+				"     upsertable:false,",
+				"     format: 'document',",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> teams",
+				"dcompetitions sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     deletable:false,",
+				"     insertable:true,",
+				"     updateable:false,",
+				"     upsertable:false,",
+				"     format: 'document',",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> competitions",
+				"dplayers sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     deletable:false,",
+				"     insertable:true,",
+				"     updateable:false,",
+				"     upsertable:false,",
+				"     format: 'document',",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> players",
+				"dreferees sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     deletable:false,",
+				"     insertable:true,",
+				"     updateable:false,",
+				"     upsertable:false,",
+				"     format: 'document',",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> referee",
+				"dcoaches sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     deletable:false,",
+				"     insertable:true,",
+				"     updateable:false,",
+				"     upsertable:false,",
+				"     format: 'document',",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> coaches",
+				"dplayerank sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     deletable:false,",
+				"     insertable:true,",
+				"     updateable:false,",
+				"     upsertable:false,",
+				"     format: 'document',",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> playerank",
+				"dtags2names sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     deletable:false,",
+				"     insertable:true,",
+				"     updateable:false,",
+				"     upsertable:false,",
+				"     format: 'document',",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> tag2names",
+				"deventid2names sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     deletable:false,",
+				"     insertable:true,",
+				"     updateable:false,",
+				"     upsertable:false,",
+				"     format: 'document',",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> eventid2names"
+			]
+		}
+	}
+}

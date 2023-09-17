@@ -1,0 +1,41 @@
+{
+	"name": "eventid2name",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureBlobStorage1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "eventid2name.csv",
+				"container": "soccermetrics"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "event",
+				"type": "String"
+			},
+			{
+				"name": "subevent",
+				"type": "String"
+			},
+			{
+				"name": "event_label",
+				"type": "String"
+			},
+			{
+				"name": "subevent_label",
+				"type": "String"
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

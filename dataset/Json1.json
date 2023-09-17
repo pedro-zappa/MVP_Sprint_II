@@ -1,0 +1,1142 @@
+{
+	"name": "Json1",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureBlobStorage1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "matches_World_Cup.json",
+				"container": "soccermetrics"
+			}
+		},
+		"schema": {
+			"type": "object",
+			"properties": {
+				"status": {
+					"type": "string"
+				},
+				"roundId": {
+					"type": "integer"
+				},
+				"gameweek": {
+					"type": "integer"
+				},
+				"teamsData": {
+					"type": "object",
+					"properties": {
+						"2413": {
+							"type": "object",
+							"properties": {
+								"scoreET": {
+									"type": "integer"
+								},
+								"coachId": {
+									"type": "integer"
+								},
+								"side": {
+									"type": "string"
+								},
+								"teamId": {
+									"type": "integer"
+								},
+								"score": {
+									"type": "integer"
+								},
+								"scoreP": {
+									"type": "integer"
+								},
+								"hasFormation": {
+									"type": "integer"
+								},
+								"formation": {
+									"type": "object",
+									"properties": {
+										"bench": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"playerId": {
+														"type": "integer"
+													},
+													"assists": {
+														"type": "string"
+													},
+													"goals": {
+														"type": "string"
+													},
+													"ownGoals": {
+														"type": "string"
+													},
+													"redCards": {
+														"type": "string"
+													},
+													"yellowCards": {
+														"type": "string"
+													}
+												}
+											}
+										},
+										"lineup": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"playerId": {
+														"type": "integer"
+													},
+													"assists": {
+														"type": "string"
+													},
+													"goals": {
+														"type": "string"
+													},
+													"ownGoals": {
+														"type": "string"
+													},
+													"redCards": {
+														"type": "string"
+													},
+													"yellowCards": {
+														"type": "string"
+													}
+												}
+											}
+										},
+										"substitutions": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"playerIn": {
+														"type": "integer"
+													},
+													"assists": {
+														"type": "string"
+													},
+													"playerOut": {
+														"type": "integer"
+													},
+													"minute": {
+														"type": "integer"
+													}
+												}
+											}
+										}
+									}
+								},
+								"scoreHT": {
+									"type": "integer"
+								}
+							}
+						},
+						"4418": {
+							"type": "object",
+							"properties": {
+								"scoreET": {
+									"type": "integer"
+								},
+								"coachId": {
+									"type": "integer"
+								},
+								"side": {
+									"type": "string"
+								},
+								"teamId": {
+									"type": "integer"
+								},
+								"score": {
+									"type": "integer"
+								},
+								"scoreP": {
+									"type": "integer"
+								},
+								"hasFormation": {
+									"type": "integer"
+								},
+								"formation": {
+									"type": "object",
+									"properties": {
+										"bench": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"playerId": {
+														"type": "integer"
+													},
+													"assists": {
+														"type": "string"
+													},
+													"goals": {
+														"type": "string"
+													},
+													"ownGoals": {
+														"type": "string"
+													},
+													"redCards": {
+														"type": "string"
+													},
+													"yellowCards": {
+														"type": "string"
+													}
+												}
+											}
+										},
+										"lineup": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"playerId": {
+														"type": "integer"
+													},
+													"assists": {
+														"type": "string"
+													},
+													"goals": {
+														"type": "string"
+													},
+													"ownGoals": {
+														"type": "string"
+													},
+													"redCards": {
+														"type": "string"
+													},
+													"yellowCards": {
+														"type": "string"
+													}
+												}
+											}
+										},
+										"substitutions": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"playerIn": {
+														"type": "integer"
+													},
+													"assists": {
+														"type": "string"
+													},
+													"playerOut": {
+														"type": "integer"
+													},
+													"minute": {
+														"type": "integer"
+													}
+												}
+											}
+										}
+									}
+								},
+								"scoreHT": {
+									"type": "integer"
+								}
+							}
+						},
+						"5629": {
+							"type": "object",
+							"properties": {
+								"scoreET": {
+									"type": "integer"
+								},
+								"coachId": {
+									"type": "integer"
+								},
+								"side": {
+									"type": "string"
+								},
+								"teamId": {
+									"type": "integer"
+								},
+								"score": {
+									"type": "integer"
+								},
+								"scoreP": {
+									"type": "integer"
+								},
+								"hasFormation": {
+									"type": "integer"
+								},
+								"formation": {
+									"type": "object",
+									"properties": {
+										"bench": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"playerId": {
+														"type": "integer"
+													},
+													"assists": {
+														"type": "string"
+													},
+													"goals": {
+														"type": "string"
+													},
+													"ownGoals": {
+														"type": "string"
+													},
+													"redCards": {
+														"type": "string"
+													},
+													"yellowCards": {
+														"type": "string"
+													}
+												}
+											}
+										},
+										"lineup": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"playerId": {
+														"type": "integer"
+													},
+													"assists": {
+														"type": "string"
+													},
+													"goals": {
+														"type": "string"
+													},
+													"ownGoals": {
+														"type": "string"
+													},
+													"redCards": {
+														"type": "string"
+													},
+													"yellowCards": {
+														"type": "string"
+													}
+												}
+											}
+										},
+										"substitutions": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"playerIn": {
+														"type": "integer"
+													},
+													"assists": {
+														"type": "string"
+													},
+													"playerOut": {
+														"type": "integer"
+													},
+													"minute": {
+														"type": "integer"
+													}
+												}
+											}
+										}
+									}
+								},
+								"scoreHT": {
+									"type": "integer"
+								}
+							}
+						},
+						"6380": {
+							"type": "object",
+							"properties": {
+								"scoreET": {
+									"type": "integer"
+								},
+								"coachId": {
+									"type": "integer"
+								},
+								"side": {
+									"type": "string"
+								},
+								"teamId": {
+									"type": "integer"
+								},
+								"score": {
+									"type": "integer"
+								},
+								"scoreP": {
+									"type": "integer"
+								},
+								"hasFormation": {
+									"type": "integer"
+								},
+								"formation": {
+									"type": "object",
+									"properties": {
+										"bench": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"playerId": {
+														"type": "integer"
+													},
+													"assists": {
+														"type": "string"
+													},
+													"goals": {
+														"type": "string"
+													},
+													"ownGoals": {
+														"type": "string"
+													},
+													"redCards": {
+														"type": "string"
+													},
+													"yellowCards": {
+														"type": "string"
+													}
+												}
+											}
+										},
+										"lineup": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"playerId": {
+														"type": "integer"
+													},
+													"assists": {
+														"type": "string"
+													},
+													"goals": {
+														"type": "string"
+													},
+													"ownGoals": {
+														"type": "string"
+													},
+													"redCards": {
+														"type": "string"
+													},
+													"yellowCards": {
+														"type": "string"
+													}
+												}
+											}
+										},
+										"substitutions": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"playerIn": {
+														"type": "integer"
+													},
+													"assists": {
+														"type": "string"
+													},
+													"playerOut": {
+														"type": "integer"
+													},
+													"minute": {
+														"type": "integer"
+													}
+												}
+											}
+										}
+									}
+								},
+								"scoreHT": {
+									"type": "integer"
+								}
+							}
+						},
+						"6697": {
+							"type": "object",
+							"properties": {
+								"scoreET": {
+									"type": "integer"
+								},
+								"coachId": {
+									"type": "integer"
+								},
+								"side": {
+									"type": "string"
+								},
+								"teamId": {
+									"type": "integer"
+								},
+								"score": {
+									"type": "integer"
+								},
+								"scoreP": {
+									"type": "integer"
+								},
+								"hasFormation": {
+									"type": "integer"
+								},
+								"formation": {
+									"type": "object",
+									"properties": {
+										"bench": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"playerId": {
+														"type": "integer"
+													},
+													"assists": {
+														"type": "string"
+													},
+													"goals": {
+														"type": "string"
+													},
+													"ownGoals": {
+														"type": "string"
+													},
+													"redCards": {
+														"type": "string"
+													},
+													"yellowCards": {
+														"type": "string"
+													}
+												}
+											}
+										},
+										"lineup": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"playerId": {
+														"type": "integer"
+													},
+													"assists": {
+														"type": "string"
+													},
+													"goals": {
+														"type": "string"
+													},
+													"ownGoals": {
+														"type": "string"
+													},
+													"redCards": {
+														"type": "string"
+													},
+													"yellowCards": {
+														"type": "string"
+													}
+												}
+											}
+										},
+										"substitutions": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"playerIn": {
+														"type": "integer"
+													},
+													"assists": {
+														"type": "string"
+													},
+													"playerOut": {
+														"type": "integer"
+													},
+													"minute": {
+														"type": "integer"
+													}
+												}
+											}
+										}
+									}
+								},
+								"scoreHT": {
+									"type": "integer"
+								}
+							}
+						},
+						"7047": {
+							"type": "object",
+							"properties": {
+								"scoreET": {
+									"type": "integer"
+								},
+								"coachId": {
+									"type": "integer"
+								},
+								"side": {
+									"type": "string"
+								},
+								"teamId": {
+									"type": "integer"
+								},
+								"score": {
+									"type": "integer"
+								},
+								"scoreP": {
+									"type": "integer"
+								},
+								"hasFormation": {
+									"type": "integer"
+								},
+								"formation": {
+									"type": "object",
+									"properties": {
+										"bench": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"playerId": {
+														"type": "integer"
+													},
+													"assists": {
+														"type": "string"
+													},
+													"goals": {
+														"type": "string"
+													},
+													"ownGoals": {
+														"type": "string"
+													},
+													"redCards": {
+														"type": "string"
+													},
+													"yellowCards": {
+														"type": "string"
+													}
+												}
+											}
+										},
+										"lineup": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"playerId": {
+														"type": "integer"
+													},
+													"assists": {
+														"type": "string"
+													},
+													"goals": {
+														"type": "string"
+													},
+													"ownGoals": {
+														"type": "string"
+													},
+													"redCards": {
+														"type": "string"
+													},
+													"yellowCards": {
+														"type": "string"
+													}
+												}
+											}
+										},
+										"substitutions": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"playerIn": {
+														"type": "integer"
+													},
+													"assists": {
+														"type": "string"
+													},
+													"playerOut": {
+														"type": "integer"
+													},
+													"minute": {
+														"type": "integer"
+													}
+												}
+											}
+										}
+									}
+								},
+								"scoreHT": {
+									"type": "integer"
+								}
+							}
+						},
+						"9598": {
+							"type": "object",
+							"properties": {
+								"scoreET": {
+									"type": "integer"
+								},
+								"coachId": {
+									"type": "integer"
+								},
+								"side": {
+									"type": "string"
+								},
+								"teamId": {
+									"type": "integer"
+								},
+								"score": {
+									"type": "integer"
+								},
+								"scoreP": {
+									"type": "integer"
+								},
+								"hasFormation": {
+									"type": "integer"
+								},
+								"formation": {
+									"type": "object",
+									"properties": {
+										"bench": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"playerId": {
+														"type": "integer"
+													},
+													"assists": {
+														"type": "string"
+													},
+													"goals": {
+														"type": "string"
+													},
+													"ownGoals": {
+														"type": "string"
+													},
+													"redCards": {
+														"type": "string"
+													},
+													"yellowCards": {
+														"type": "string"
+													}
+												}
+											}
+										},
+										"lineup": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"playerId": {
+														"type": "integer"
+													},
+													"assists": {
+														"type": "string"
+													},
+													"goals": {
+														"type": "string"
+													},
+													"ownGoals": {
+														"type": "string"
+													},
+													"redCards": {
+														"type": "string"
+													},
+													"yellowCards": {
+														"type": "string"
+													}
+												}
+											}
+										},
+										"substitutions": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"playerIn": {
+														"type": "integer"
+													},
+													"assists": {
+														"type": "string"
+													},
+													"playerOut": {
+														"type": "integer"
+													},
+													"minute": {
+														"type": "integer"
+													}
+												}
+											}
+										}
+									}
+								},
+								"scoreHT": {
+									"type": "integer"
+								}
+							}
+						},
+						"12430": {
+							"type": "object",
+							"properties": {
+								"scoreET": {
+									"type": "integer"
+								},
+								"coachId": {
+									"type": "integer"
+								},
+								"side": {
+									"type": "string"
+								},
+								"teamId": {
+									"type": "integer"
+								},
+								"score": {
+									"type": "integer"
+								},
+								"scoreP": {
+									"type": "integer"
+								},
+								"hasFormation": {
+									"type": "integer"
+								},
+								"formation": {
+									"type": "object",
+									"properties": {
+										"bench": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"playerId": {
+														"type": "integer"
+													},
+													"assists": {
+														"type": "string"
+													},
+													"goals": {
+														"type": "string"
+													},
+													"ownGoals": {
+														"type": "string"
+													},
+													"redCards": {
+														"type": "string"
+													},
+													"yellowCards": {
+														"type": "string"
+													}
+												}
+											}
+										},
+										"lineup": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"playerId": {
+														"type": "integer"
+													},
+													"assists": {
+														"type": "string"
+													},
+													"goals": {
+														"type": "string"
+													},
+													"ownGoals": {
+														"type": "string"
+													},
+													"redCards": {
+														"type": "string"
+													},
+													"yellowCards": {
+														"type": "string"
+													}
+												}
+											}
+										},
+										"substitutions": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"playerIn": {
+														"type": "integer"
+													},
+													"assists": {
+														"type": "string"
+													},
+													"playerOut": {
+														"type": "integer"
+													},
+													"minute": {
+														"type": "integer"
+													}
+												}
+											}
+										}
+									}
+								},
+								"scoreHT": {
+									"type": "integer"
+								}
+							}
+						},
+						"14358": {
+							"type": "object",
+							"properties": {
+								"scoreET": {
+									"type": "integer"
+								},
+								"coachId": {
+									"type": "integer"
+								},
+								"side": {
+									"type": "string"
+								},
+								"teamId": {
+									"type": "integer"
+								},
+								"score": {
+									"type": "integer"
+								},
+								"scoreP": {
+									"type": "integer"
+								},
+								"hasFormation": {
+									"type": "integer"
+								},
+								"formation": {
+									"type": "object",
+									"properties": {
+										"bench": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"playerId": {
+														"type": "integer"
+													},
+													"assists": {
+														"type": "string"
+													},
+													"goals": {
+														"type": "string"
+													},
+													"ownGoals": {
+														"type": "string"
+													},
+													"redCards": {
+														"type": "string"
+													},
+													"yellowCards": {
+														"type": "string"
+													}
+												}
+											}
+										},
+										"lineup": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"playerId": {
+														"type": "integer"
+													},
+													"assists": {
+														"type": "string"
+													},
+													"goals": {
+														"type": "string"
+													},
+													"ownGoals": {
+														"type": "string"
+													},
+													"redCards": {
+														"type": "string"
+													},
+													"yellowCards": {
+														"type": "string"
+													}
+												}
+											}
+										},
+										"substitutions": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"playerIn": {
+														"type": "integer"
+													},
+													"assists": {
+														"type": "string"
+													},
+													"playerOut": {
+														"type": "integer"
+													},
+													"minute": {
+														"type": "integer"
+													}
+												}
+											}
+										}
+									}
+								},
+								"scoreHT": {
+									"type": "integer"
+								}
+							}
+						},
+						"15670": {
+							"type": "object",
+							"properties": {
+								"scoreET": {
+									"type": "integer"
+								},
+								"coachId": {
+									"type": "integer"
+								},
+								"side": {
+									"type": "string"
+								},
+								"teamId": {
+									"type": "integer"
+								},
+								"score": {
+									"type": "integer"
+								},
+								"scoreP": {
+									"type": "integer"
+								},
+								"hasFormation": {
+									"type": "integer"
+								},
+								"formation": {
+									"type": "object",
+									"properties": {
+										"bench": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"playerId": {
+														"type": "integer"
+													},
+													"assists": {
+														"type": "string"
+													},
+													"goals": {
+														"type": "string"
+													},
+													"ownGoals": {
+														"type": "string"
+													},
+													"redCards": {
+														"type": "string"
+													},
+													"yellowCards": {
+														"type": "string"
+													}
+												}
+											}
+										},
+										"lineup": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"playerId": {
+														"type": "integer"
+													},
+													"assists": {
+														"type": "string"
+													},
+													"goals": {
+														"type": "string"
+													},
+													"ownGoals": {
+														"type": "string"
+													},
+													"redCards": {
+														"type": "string"
+													},
+													"yellowCards": {
+														"type": "string"
+													}
+												}
+											}
+										},
+										"substitutions": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"playerIn": {
+														"type": "integer"
+													},
+													"assists": {
+														"type": "string"
+													},
+													"playerOut": {
+														"type": "integer"
+													},
+													"minute": {
+														"type": "integer"
+													}
+												}
+											}
+										}
+									}
+								},
+								"scoreHT": {
+									"type": "integer"
+								}
+							}
+						}
+					}
+				},
+				"seasonId": {
+					"type": "integer"
+				},
+				"dateutc": {
+					"type": "string"
+				},
+				"winner": {
+					"type": "integer"
+				},
+				"venue": {
+					"type": "string"
+				},
+				"wyId": {
+					"type": "integer"
+				},
+				"label": {
+					"type": "string"
+				},
+				"date": {
+					"type": "string"
+				},
+				"groupName": {
+					"type": "string"
+				},
+				"referees": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"properties": {
+							"refereeId": {
+								"type": "integer"
+							},
+							"role": {
+								"type": "string"
+							}
+						}
+					}
+				},
+				"duration": {
+					"type": "string"
+				},
+				"competitionId": {
+					"type": "integer"
+				}
+			}
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

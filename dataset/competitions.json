@@ -1,0 +1,53 @@
+{
+	"name": "competitions",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureBlobStorage1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "competitions.json",
+				"container": "soccermetrics"
+			}
+		},
+		"schema": {
+			"type": "object",
+			"properties": {
+				"name": {
+					"type": "string"
+				},
+				"wyId": {
+					"type": "integer"
+				},
+				"format": {
+					"type": "string"
+				},
+				"area": {
+					"type": "object",
+					"properties": {
+						"name": {
+							"type": "string"
+						},
+						"id": {
+							"type": "null"
+						},
+						"alpha3code": {
+							"type": "string"
+						},
+						"alpha2code": {
+							"type": "string"
+						}
+					}
+				},
+				"type": {
+					"type": "string"
+				}
+			}
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

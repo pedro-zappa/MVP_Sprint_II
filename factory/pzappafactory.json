@@ -1,0 +1,9 @@
+{
+	"name": "pzappafactory",
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "5351f3bb-f75e-4cf0-b205-a71df350e713",
+		"tenantId": "5b6f6241-9a57-4be4-8e50-1dfa72e79a57"
+	}
+}

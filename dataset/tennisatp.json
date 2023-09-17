@@ -1,0 +1,241 @@
+{
+	"name": "tennisatp",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureBlobStorage1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "tennis_data.csv",
+				"container": "tennis-atp"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "ATP",
+				"type": "String"
+			},
+			{
+				"name": "Location",
+				"type": "String"
+			},
+			{
+				"name": "Tournament",
+				"type": "String"
+			},
+			{
+				"name": "Date",
+				"type": "String"
+			},
+			{
+				"name": "Series",
+				"type": "String"
+			},
+			{
+				"name": "Court",
+				"type": "String"
+			},
+			{
+				"name": "Surface",
+				"type": "String"
+			},
+			{
+				"name": "Round",
+				"type": "String"
+			},
+			{
+				"name": "Best of",
+				"type": "String"
+			},
+			{
+				"name": "Winner",
+				"type": "String"
+			},
+			{
+				"name": "Loser",
+				"type": "String"
+			},
+			{
+				"name": "WRank",
+				"type": "String"
+			},
+			{
+				"name": "LRank",
+				"type": "String"
+			},
+			{
+				"name": "WPts",
+				"type": "String"
+			},
+			{
+				"name": "LPts",
+				"type": "String"
+			},
+			{
+				"name": "W1",
+				"type": "String"
+			},
+			{
+				"name": "L1",
+				"type": "String"
+			},
+			{
+				"name": "W2",
+				"type": "String"
+			},
+			{
+				"name": "L2",
+				"type": "String"
+			},
+			{
+				"name": "W3",
+				"type": "String"
+			},
+			{
+				"name": "L3",
+				"type": "String"
+			},
+			{
+				"name": "W4",
+				"type": "String"
+			},
+			{
+				"name": "L4",
+				"type": "String"
+			},
+			{
+				"name": "W5",
+				"type": "String"
+			},
+			{
+				"name": "L5",
+				"type": "String"
+			},
+			{
+				"name": "Wsets",
+				"type": "String"
+			},
+			{
+				"name": "Lsets",
+				"type": "String"
+			},
+			{
+				"name": "Comment",
+				"type": "String"
+			},
+			{
+				"name": "B365W",
+				"type": "String"
+			},
+			{
+				"name": "B365L",
+				"type": "String"
+			},
+			{
+				"name": "PSW",
+				"type": "String"
+			},
+			{
+				"name": "PSL",
+				"type": "String"
+			},
+			{
+				"name": "MaxW",
+				"type": "String"
+			},
+			{
+				"name": "MaxL",
+				"type": "String"
+			},
+			{
+				"name": "AvgW",
+				"type": "String"
+			},
+			{
+				"name": "AvgL",
+				"type": "String"
+			},
+			{
+				"name": "EXW",
+				"type": "String"
+			},
+			{
+				"name": "EXL",
+				"type": "String"
+			},
+			{
+				"name": "LBW",
+				"type": "String"
+			},
+			{
+				"name": "LBL",
+				"type": "String"
+			},
+			{
+				"name": "SJW",
+				"type": "String"
+			},
+			{
+				"name": "SJL",
+				"type": "String"
+			},
+			{
+				"name": "UBW",
+				"type": "String"
+			},
+			{
+				"name": "UBL",
+				"type": "String"
+			},
+			{
+				"name": "pl1_flag",
+				"type": "String"
+			},
+			{
+				"name": "pl1_year_pro",
+				"type": "String"
+			},
+			{
+				"name": "pl1_weight",
+				"type": "String"
+			},
+			{
+				"name": "pl1_height",
+				"type": "String"
+			},
+			{
+				"name": "pl1_hand",
+				"type": "String"
+			},
+			{
+				"name": "pl2_flag",
+				"type": "String"
+			},
+			{
+				"name": "pl2_year_pro",
+				"type": "String"
+			},
+			{
+				"name": "pl2_weight",
+				"type": "String"
+			},
+			{
+				"name": "pl2_height",
+				"type": "String"
+			},
+			{
+				"name": "pl2_hand",
+				"type": "String"
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

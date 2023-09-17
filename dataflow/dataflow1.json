@@ -1,0 +1,129 @@
+{
+	"name": "dataflow1",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "tennisatp",
+						"type": "DatasetReference"
+					},
+					"name": "source1"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "AzureSqlTable1",
+						"type": "DatasetReference"
+					},
+					"name": "sink1"
+				}
+			],
+			"transformations": [
+				{
+					"name": "select1"
+				}
+			],
+			"scriptLines": [
+				"source(output(",
+				"          ATP as short,",
+				"          Location as string,",
+				"          Tournament as string,",
+				"          Date as date,",
+				"          Series as string,",
+				"          Court as string,",
+				"          Surface as string,",
+				"          Round as string,",
+				"          {Best of} as short,",
+				"          Winner as string,",
+				"          Loser as string,",
+				"          WRank as double,",
+				"          LRank as double,",
+				"          WPts as double,",
+				"          LPts as double,",
+				"          W1 as double,",
+				"          L1 as double,",
+				"          W2 as double,",
+				"          L2 as double,",
+				"          W3 as double,",
+				"          L3 as double,",
+				"          W4 as double,",
+				"          L4 as double,",
+				"          W5 as double,",
+				"          L5 as double,",
+				"          Wsets as double,",
+				"          Lsets as double,",
+				"          Comment as string,",
+				"          B365W as double,",
+				"          B365L as double,",
+				"          PSW as double,",
+				"          PSL as double,",
+				"          MaxW as double,",
+				"          MaxL as double,",
+				"          AvgW as double,",
+				"          AvgL as double,",
+				"          EXW as string,",
+				"          EXL as string,",
+				"          LBW as string,",
+				"          LBL as string,",
+				"          SJW as string,",
+				"          SJL as string,",
+				"          UBW as string,",
+				"          UBL as string,",
+				"          pl1_flag as string,",
+				"          pl1_year_pro as double,",
+				"          pl1_weight as double,",
+				"          pl1_height as double,",
+				"          pl1_hand as string,",
+				"          pl2_flag as string,",
+				"          pl2_year_pro as double,",
+				"          pl2_weight as double,",
+				"          pl2_height as double,",
+				"          pl2_hand as string",
+				"     ),",
+				"     allowSchemaDrift: false,",
+				"     validateSchema: true,",
+				"     ignoreNoFilesFound: false) ~> source1",
+				"source1 select(mapColumn(",
+				"          ATP,",
+				"          Location,",
+				"          Tournament,",
+				"          Date,",
+				"          Series,",
+				"          Court,",
+				"          Surface,",
+				"          Round,",
+				"          {Best of},",
+				"          Winner,",
+				"          Loser,",
+				"          WRank,",
+				"          LRank,",
+				"          Wsets,",
+				"          Lsets,",
+				"          B365W,",
+				"          B365L,",
+				"          pl1_flag,",
+				"          pl1_year_pro,",
+				"          pl2_flag,",
+				"          pl2_year_pro,",
+				"          pl1_hand,",
+				"          pl2_hand",
+				"     ),",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> select1",
+				"select1 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     deletable:false,",
+				"     insertable:true,",
+				"     updateable:false,",
+				"     upsertable:false,",
+				"     format: 'table',",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     errorHandlingOption: 'stopOnFirstError') ~> sink1"
+			]
+		}
+	}
+}

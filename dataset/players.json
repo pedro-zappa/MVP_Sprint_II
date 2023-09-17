@@ -1,0 +1,105 @@
+{
+	"name": "players",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureBlobStorage1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "players.json",
+				"container": "soccermetrics"
+			}
+		},
+		"schema": {
+			"type": "object",
+			"properties": {
+				"passportArea": {
+					"type": "object",
+					"properties": {
+						"name": {
+							"type": "string"
+						},
+						"id": {
+							"type": "string"
+						},
+						"alpha3code": {
+							"type": "string"
+						},
+						"alpha2code": {
+							"type": "string"
+						}
+					}
+				},
+				"weight": {
+					"type": "integer"
+				},
+				"firstName": {
+					"type": "string"
+				},
+				"middleName": {
+					"type": "string"
+				},
+				"lastName": {
+					"type": "string"
+				},
+				"currentTeamId": {
+					"type": "integer"
+				},
+				"birthDate": {
+					"type": "string"
+				},
+				"height": {
+					"type": "integer"
+				},
+				"role": {
+					"type": "object",
+					"properties": {
+						"code2": {
+							"type": "string"
+						},
+						"code3": {
+							"type": "string"
+						},
+						"name": {
+							"type": "string"
+						}
+					}
+				},
+				"birthArea": {
+					"type": "object",
+					"properties": {
+						"name": {
+							"type": "string"
+						},
+						"id": {
+							"type": "string"
+						},
+						"alpha3code": {
+							"type": "string"
+						},
+						"alpha2code": {
+							"type": "string"
+						}
+					}
+				},
+				"wyId": {
+					"type": "integer"
+				},
+				"foot": {
+					"type": "string"
+				},
+				"shortName": {
+					"type": "string"
+				},
+				"currentNationalTeamId": {
+					"type": "null"
+				}
+			}
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

@@ -1,0 +1,20 @@
+{
+	"name": "powerquery1",
+	"properties": {
+		"type": "WranglingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"name": "tennisatp",
+					"script": "source(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false) ~> tennisatp",
+					"dataset": {
+						"referenceName": "tennisatp",
+						"type": "DatasetReference"
+					}
+				}
+			],
+			"script": "section Section1;\r\nshared tennisatp = let AdfDoc = AzureStorage.BlobContents(\"https://pzappastorage.blob.core.windows.net/tennis-atp/tennis_data.csv\"),Csv = Csv.Document(AdfDoc, [Delimiter = \",\", Encoding = TextEncoding.Utf8, QuoteStyle = QuoteStyle.Csv]), PromotedHeaders = Table.PromoteHeaders(Csv, [PromoteAllScalars = true]) in  PromotedHeaders;\r\nshared UserQuery = let Source = #\"tennisatp\",\r\n  #\"Changed column type\" = Table.TransformColumnTypes(Source, {{\"Best of\", Int64.Type}, {\"W1\", Int64.Type}, {\"Lsets\", Int64.Type}, {\"Wsets\", Int64.Type}, {\"L5\", Int64.Type}, {\"W5\", Int64.Type}, {\"L4\", Int64.Type}, {\"W4\", Int64.Type}, {\"L3\", Int64.Type}, {\"W3\", Int64.Type}, {\"L2\", Int64.Type}, {\"W2\", Int64.Type}, {\"L1\", Int64.Type}, {\"LPts\", Int64.Type}, {\"WPts\", Int64.Type}, {\"LRank\", Int64.Type}, {\"WRank\", Int64.Type}, {\"B365W\", type number}, {\"B365L\", type number}, {\"PSW\", type number}, {\"PSL\", type number}, {\"MaxW\", type number}, {\"MaxL\", type number}, {\"AvgW\", type number}, {\"AvgL\", type number}, {\"EXW\", type number}, {\"EXL\", type number}, {\"LBW\", type number}, {\"LBL\", type number}, {\"SJW\", type number}, {\"SJL\", type number}, {\"UBW\", type number}, {\"UBL\", type number}, {\"pl1_year_pro\", Int64.Type}, {\"pl1_weight\", Int64.Type}, {\"pl1_height\", Int64.Type}, {\"pl2_year_pro\", Int64.Type}, {\"pl2_weight\", Int64.Type}, {\"pl2_height\", Int64.Type}}) in #\"Changed column type\";\r\n",
+			"documentLocale": "en-us"
+		}
+	}
+}
