@@ -17,6 +17,13 @@
 						"type": "DatasetReference"
 					},
 					"name": "Institutions"
+				},
+				{
+					"dataset": {
+						"referenceName": "DelimitedText11",
+						"type": "DatasetReference"
+					},
+					"name": "source1"
 				}
 			],
 			"sinks": [
@@ -33,6 +40,13 @@
 						"type": "DatasetReference"
 					},
 					"name": "sink2"
+				},
+				{
+					"dataset": {
+						"referenceName": "AzureSqlTable14",
+						"type": "DatasetReference"
+					},
+					"name": "sink3"
 				}
 			],
 			"transformations": [
@@ -41,6 +55,9 @@
 				},
 				{
 					"name": "select2"
+				},
+				{
+					"name": "select3"
 				}
 			],
 			"scriptLines": [
@@ -188,6 +205,24 @@
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: false) ~> Institutions",
+				"source(output(",
+				"          CERT as integer,",
+				"          CHCLASS1 as string,",
+				"          CITYST as string,",
+				"          COST as integer,",
+				"          FAILDATE as date,",
+				"          FIN as short,",
+				"          ID as short,",
+				"          NAME as string,",
+				"          QBFASSET as integer,",
+				"          QBFDEP as integer,",
+				"          RESTYPE as string,",
+				"          RESTYPE1 as string,",
+				"          SAVR as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> source1",
 				"Institutions select(mapColumn(",
 				"          CERT,",
 				"          ACTIVE,",
@@ -223,6 +258,13 @@
 				"     ),",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true) ~> select2",
+				"source1 select(mapColumn(",
+				"          CERT,",
+				"          FAILDATE,",
+				"          RESTYPE",
+				"     ),",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> select3",
 				"select1 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     deletable:false,",
@@ -242,7 +284,17 @@
 				"     format: 'table',",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true,",
-				"     errorHandlingOption: 'stopOnFirstError') ~> sink2"
+				"     errorHandlingOption: 'stopOnFirstError') ~> sink2",
+				"select3 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     deletable:false,",
+				"     insertable:true,",
+				"     updateable:false,",
+				"     upsertable:false,",
+				"     format: 'table',",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     errorHandlingOption: 'stopOnFirstError') ~> sink3"
 			]
 		}
 	}

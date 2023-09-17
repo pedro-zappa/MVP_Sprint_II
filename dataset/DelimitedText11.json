@@ -1,0 +1,76 @@
+{
+	"name": "DelimitedText11",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureBlobStorage1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "Summary_of_Results_9_17_2023.csv",
+				"container": "financialinstitutions"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "CERT",
+				"type": "String"
+			},
+			{
+				"name": "CHCLASS1",
+				"type": "String"
+			},
+			{
+				"name": "CITYST",
+				"type": "String"
+			},
+			{
+				"name": "COST",
+				"type": "String"
+			},
+			{
+				"name": "FAILDATE",
+				"type": "String"
+			},
+			{
+				"name": "FIN",
+				"type": "String"
+			},
+			{
+				"name": "ID",
+				"type": "String"
+			},
+			{
+				"name": "NAME",
+				"type": "String"
+			},
+			{
+				"name": "QBFASSET",
+				"type": "String"
+			},
+			{
+				"name": "QBFDEP",
+				"type": "String"
+			},
+			{
+				"name": "RESTYPE",
+				"type": "String"
+			},
+			{
+				"name": "RESTYPE1",
+				"type": "String"
+			},
+			{
+				"name": "SAVR",
+				"type": "String"
+			}
+		]
+	}
+}
