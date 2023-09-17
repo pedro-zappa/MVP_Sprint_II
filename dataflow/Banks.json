@@ -38,6 +38,9 @@
 			"transformations": [
 				{
 					"name": "select1"
+				},
+				{
+					"name": "select2"
 				}
 			],
 			"scriptLines": [
@@ -47,11 +50,11 @@
 				"          {State�} as string,",
 				"          {Cert�} as integer,",
 				"          {Acquiring Institution�} as string,",
-				"          {Closing Date�} as string,",
+				"          {Closing Date�} as date,",
 				"          Fund as short",
 				"     ),",
-				"     allowSchemaDrift: true,",
-				"     validateSchema: false,",
+				"     allowSchemaDrift: false,",
+				"     validateSchema: true,",
 				"     ignoreNoFilesFound: false) ~> BankList",
 				"source(output(",
 				"          STNAME as string,",
@@ -209,6 +212,17 @@
 				"     ),",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true) ~> select1",
+				"BankList select(mapColumn(",
+				"          BANKNAME = {Bank Name�},",
+				"          CITY = {City�},",
+				"          STATE = {State�},",
+				"          CERT = {Cert�},",
+				"          ACQUIRINGINST = {Acquiring Institution�},",
+				"          CLOSINGDATE = {Closing Date�},",
+				"          FUND = Fund",
+				"     ),",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> select2",
 				"select1 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     deletable:false,",
@@ -219,7 +233,7 @@
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true,",
 				"     errorHandlingOption: 'stopOnFirstError') ~> sink1",
-				"BankList sink(allowSchemaDrift: true,",
+				"select2 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     deletable:false,",
 				"     insertable:true,",
