@@ -1,0 +1,16 @@
+{
+	"name": "AzureSqlTable12",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "banks",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "dinstitutions"
+		}
+	}
+}

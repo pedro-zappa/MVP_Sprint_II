@@ -17,16 +17,24 @@
 						"type": "DatasetReference"
 					},
 					"name": "Institutions"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "AzureSqlTable12",
+						"type": "DatasetReference"
+					},
+					"name": "sink1"
 				},
 				{
 					"dataset": {
-						"referenceName": "DelimitedText10",
+						"referenceName": "AzureSqlTable13",
 						"type": "DatasetReference"
 					},
-					"name": "InstDefinitions"
+					"name": "sink2"
 				}
 			],
-			"sinks": [],
 			"transformations": [
 				{
 					"name": "select1"
@@ -53,21 +61,6 @@
 				"          ADDRESS as string,",
 				"          ASSET as integer,",
 				"          BKCLASS as string,",
-				"          CHANGEC1 as short,",
-				"          CHANGEC2 as short,",
-				"          CHANGEC3 as short,",
-				"          CHANGEC4 as short,",
-				"          CHANGEC5 as short,",
-				"          CHANGEC6 as short,",
-				"          CHANGEC7 as short,",
-				"          CHANGEC8 as string,",
-				"          CHANGEC9 as string,",
-				"          CHANGEC10 as string,",
-				"          CHANGEC11 as string,",
-				"          CHANGEC12 as string,",
-				"          CHANGEC13 as string,",
-				"          CHANGEC14 as string,",
-				"          CHANGEC15 as string,",
 				"          CHARTER as short,",
 				"          CHRTAGNT as string,",
 				"          CONSERVE as boolean,",
@@ -192,17 +185,7 @@
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: false) ~> Institutions",
-				"source(output(",
-				"          {Variable Name} as string,",
-				"          {Variable Label} as string,",
-				"          {Variable Definition} as string",
-				"     ),",
-				"     allowSchemaDrift: true,",
-				"     validateSchema: false,",
-				"     ignoreNoFilesFound: false) ~> InstDefinitions",
 				"Institutions select(mapColumn(",
-				"          each(match(/* All input columns */ true()),",
-				"               /* Input name */ $$ = $$),",
 				"          CERT,",
 				"          ACTIVE,",
 				"          ASSET,",
@@ -225,7 +208,27 @@
 				"          ROEQ",
 				"     ),",
 				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true) ~> select1"
+				"     skipDuplicateMapOutputs: true) ~> select1",
+				"select1 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     deletable:false,",
+				"     insertable:true,",
+				"     updateable:false,",
+				"     upsertable:false,",
+				"     format: 'table',",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     errorHandlingOption: 'stopOnFirstError') ~> sink1",
+				"BankList sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     deletable:false,",
+				"     insertable:true,",
+				"     updateable:false,",
+				"     upsertable:false,",
+				"     format: 'table',",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     errorHandlingOption: 'stopOnFirstError') ~> sink2"
 			]
 		}
 	}
