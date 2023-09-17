@@ -1,0 +1,77 @@
+{
+	"name": "SourceDataset_f4e",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureBlobStorage1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"container": "soccermetrics"
+			}
+		},
+		"schema": {
+			"type": "object",
+			"properties": {
+				"wyId": {
+					"type": "integer"
+				},
+				"shortName": {
+					"type": "string"
+				},
+				"firstName": {
+					"type": "string"
+				},
+				"middleName": {
+					"type": "string"
+				},
+				"lastName": {
+					"type": "string"
+				},
+				"birthDate": {
+					"type": "string"
+				},
+				"birthArea": {
+					"type": "object",
+					"properties": {
+						"id": {
+							"type": "integer"
+						},
+						"alpha2code": {
+							"type": "string"
+						},
+						"alpha3code": {
+							"type": "string"
+						},
+						"name": {
+							"type": "string"
+						}
+					}
+				},
+				"passportArea": {
+					"type": "object",
+					"properties": {
+						"id": {
+							"type": "integer"
+						},
+						"alpha2code": {
+							"type": "string"
+						},
+						"alpha3code": {
+							"type": "string"
+						},
+						"name": {
+							"type": "string"
+						}
+					}
+				},
+				"currentTeamId": {
+					"type": "integer"
+				}
+			}
+		}
+	}
+}
