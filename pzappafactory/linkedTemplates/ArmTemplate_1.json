@@ -1,0 +1,2359 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name",
+			"defaultValue": "pzappafactory"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "[concat(parameters('factoryName'), '/DelimitedText3')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureBlobStorage1",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"fileName": "referees.csv",
+						"container": "soccermetrics"
+					},
+					"columnDelimiter": ",",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": [
+					{
+						"name": "wyId",
+						"type": "String"
+					},
+					{
+						"name": "shortName",
+						"type": "String"
+					},
+					{
+						"name": "firstName",
+						"type": "String"
+					},
+					{
+						"name": "middleName",
+						"type": "String"
+					},
+					{
+						"name": "lastName",
+						"type": "String"
+					},
+					{
+						"name": "birthDate",
+						"type": "String"
+					},
+					{
+						"name": "birthArea.id",
+						"type": "String"
+					},
+					{
+						"name": "birthArea.alpha2code",
+						"type": "String"
+					},
+					{
+						"name": "birthArea.alpha3code",
+						"type": "String"
+					},
+					{
+						"name": "birthArea.name",
+						"type": "String"
+					},
+					{
+						"name": "passportArea.id",
+						"type": "String"
+					},
+					{
+						"name": "passportArea.alpha2code",
+						"type": "String"
+					},
+					{
+						"name": "passportArea.alpha3code",
+						"type": "String"
+					},
+					{
+						"name": "passportArea.name",
+						"type": "String"
+					}
+				]
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/DelimitedText4')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureBlobStorage1",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"fileName": "players.csv",
+						"container": "soccermetrics"
+					},
+					"columnDelimiter": ",",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": [
+					{
+						"name": "passportArea",
+						"type": "String"
+					},
+					{
+						"name": "weight",
+						"type": "String"
+					},
+					{
+						"name": "firstName",
+						"type": "String"
+					},
+					{
+						"name": "middleName",
+						"type": "String"
+					},
+					{
+						"name": "lastName",
+						"type": "String"
+					},
+					{
+						"name": "currentTeamId",
+						"type": "String"
+					},
+					{
+						"name": "birthDate",
+						"type": "String"
+					},
+					{
+						"name": "height",
+						"type": "String"
+					},
+					{
+						"name": "role",
+						"type": "String"
+					},
+					{
+						"name": "birthArea",
+						"type": "String"
+					},
+					{
+						"name": "wyId",
+						"type": "String"
+					},
+					{
+						"name": "foot",
+						"type": "String"
+					},
+					{
+						"name": "shortName",
+						"type": "String"
+					},
+					{
+						"name": "currentNationalTeamId",
+						"type": "String"
+					}
+				]
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/DelimitedText5')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureBlobStorage1",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"fileName": "competitions.csv",
+						"container": "soccermetrics"
+					},
+					"columnDelimiter": ",",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": [
+					{
+						"name": "name",
+						"type": "String"
+					},
+					{
+						"name": "wyId",
+						"type": "String"
+					},
+					{
+						"name": "format",
+						"type": "String"
+					},
+					{
+						"name": "area",
+						"type": "String"
+					},
+					{
+						"name": "type",
+						"type": "String"
+					}
+				]
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/DelimitedText6')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureBlobStorage1",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"fileName": "teams.csv",
+						"container": "soccermetrics"
+					},
+					"columnDelimiter": ",",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": [
+					{
+						"name": "city",
+						"type": "String"
+					},
+					{
+						"name": "name",
+						"type": "String"
+					},
+					{
+						"name": "wyId",
+						"type": "String"
+					},
+					{
+						"name": "officialName",
+						"type": "String"
+					},
+					{
+						"name": "area",
+						"type": "String"
+					},
+					{
+						"name": "type",
+						"type": "String"
+					}
+				]
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/DelimitedText7')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureBlobStorage1",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"fileName": "events_World_Cup.csv",
+						"container": "soccermetrics"
+					},
+					"columnDelimiter": ",",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": [
+					{
+						"name": "eventId",
+						"type": "String"
+					},
+					{
+						"name": "subEventName",
+						"type": "String"
+					},
+					{
+						"name": "tags",
+						"type": "String"
+					},
+					{
+						"name": "playerId",
+						"type": "String"
+					},
+					{
+						"name": "positions",
+						"type": "String"
+					},
+					{
+						"name": "matchId",
+						"type": "String"
+					},
+					{
+						"name": "eventName",
+						"type": "String"
+					},
+					{
+						"name": "teamId",
+						"type": "String"
+					},
+					{
+						"name": "matchPeriod",
+						"type": "String"
+					},
+					{
+						"name": "eventSec",
+						"type": "String"
+					},
+					{
+						"name": "subEventId",
+						"type": "String"
+					},
+					{
+						"name": "id",
+						"type": "String"
+					},
+					{
+						"name": "tagsList",
+						"type": "String"
+					},
+					{
+						"name": "pos_orig_y",
+						"type": "String"
+					},
+					{
+						"name": "pos_orig_x",
+						"type": "String"
+					},
+					{
+						"name": "pos_dest_y",
+						"type": "String"
+					},
+					{
+						"name": "pos_dest_x",
+						"type": "String"
+					}
+				]
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/DelimitedText8')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureBlobStorage1",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"fileName": "matches_World_Cup.csv",
+						"container": "soccermetrics"
+					},
+					"columnDelimiter": ",",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": [
+					{
+						"name": "status",
+						"type": "String"
+					},
+					{
+						"name": "roundId",
+						"type": "String"
+					},
+					{
+						"name": "gameweek",
+						"type": "String"
+					},
+					{
+						"name": "teamsData",
+						"type": "String"
+					},
+					{
+						"name": "seasonId",
+						"type": "String"
+					},
+					{
+						"name": "dateutc",
+						"type": "String"
+					},
+					{
+						"name": "winner",
+						"type": "String"
+					},
+					{
+						"name": "venue",
+						"type": "String"
+					},
+					{
+						"name": "wyId",
+						"type": "String"
+					},
+					{
+						"name": "label",
+						"type": "String"
+					},
+					{
+						"name": "date",
+						"type": "String"
+					},
+					{
+						"name": "groupName",
+						"type": "String"
+					},
+					{
+						"name": "referees",
+						"type": "String"
+					},
+					{
+						"name": "duration",
+						"type": "String"
+					},
+					{
+						"name": "competitionId",
+						"type": "String"
+					},
+					{
+						"name": "team1.scoreET",
+						"type": "String"
+					},
+					{
+						"name": "team1.coachId",
+						"type": "String"
+					},
+					{
+						"name": "team1.side",
+						"type": "String"
+					},
+					{
+						"name": "team1.teamId",
+						"type": "String"
+					},
+					{
+						"name": "team1.score",
+						"type": "String"
+					},
+					{
+						"name": "team1.scoreP",
+						"type": "String"
+					},
+					{
+						"name": "team1.hasFormation",
+						"type": "String"
+					},
+					{
+						"name": "team1.formation",
+						"type": "String"
+					},
+					{
+						"name": "team1.scoreHT",
+						"type": "String"
+					},
+					{
+						"name": "team1.formation.bench",
+						"type": "String"
+					},
+					{
+						"name": "team1.formation.lineup",
+						"type": "String"
+					},
+					{
+						"name": "team1.formation.substitutions",
+						"type": "String"
+					},
+					{
+						"name": "team2.scoreET",
+						"type": "String"
+					},
+					{
+						"name": "team2.coachId",
+						"type": "String"
+					},
+					{
+						"name": "team2.side",
+						"type": "String"
+					},
+					{
+						"name": "team2.teamId",
+						"type": "String"
+					},
+					{
+						"name": "team2.score",
+						"type": "String"
+					},
+					{
+						"name": "team2.scoreP",
+						"type": "String"
+					},
+					{
+						"name": "team2.hasFormation",
+						"type": "String"
+					},
+					{
+						"name": "team2.formation",
+						"type": "String"
+					},
+					{
+						"name": "team2.scoreHT",
+						"type": "String"
+					},
+					{
+						"name": "team2.formation.bench",
+						"type": "String"
+					},
+					{
+						"name": "team2.formation.lineup",
+						"type": "String"
+					},
+					{
+						"name": "team2.formation.substitutions",
+						"type": "String"
+					}
+				]
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/DestinationDataset_f4e')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "CosmosDbNoSql1",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "CosmosDbSqlApiCollection",
+				"schema": {},
+				"typeProperties": {
+					"collectionName": "Items"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/Institutions')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureBlobStorage1",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"fileName": "institutions.csv",
+						"container": "financialinstitutions"
+					},
+					"columnDelimiter": ",",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": [
+					{
+						"name": "Bank Name�",
+						"type": "String"
+					},
+					{
+						"name": "City�",
+						"type": "String"
+					},
+					{
+						"name": "State�",
+						"type": "String"
+					},
+					{
+						"name": "Cert�",
+						"type": "String"
+					},
+					{
+						"name": "Acquiring Institution�",
+						"type": "String"
+					},
+					{
+						"name": "Closing Date�",
+						"type": "String"
+					},
+					{
+						"name": "Fund",
+						"type": "String"
+					}
+				]
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/Json1')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureBlobStorage1",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "Json",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"fileName": "matches_World_Cup.json",
+						"container": "soccermetrics"
+					}
+				},
+				"schema": {
+					"type": "object",
+					"properties": {
+						"status": {
+							"type": "string"
+						},
+						"roundId": {
+							"type": "integer"
+						},
+						"gameweek": {
+							"type": "integer"
+						},
+						"teamsData": {
+							"type": "object",
+							"properties": {
+								"2413": {
+									"type": "object",
+									"properties": {
+										"scoreET": {
+											"type": "integer"
+										},
+										"coachId": {
+											"type": "integer"
+										},
+										"side": {
+											"type": "string"
+										},
+										"teamId": {
+											"type": "integer"
+										},
+										"score": {
+											"type": "integer"
+										},
+										"scoreP": {
+											"type": "integer"
+										},
+										"hasFormation": {
+											"type": "integer"
+										},
+										"formation": {
+											"type": "object",
+											"properties": {
+												"bench": {
+													"type": "array",
+													"items": {
+														"type": "object",
+														"properties": {
+															"playerId": {
+																"type": "integer"
+															},
+															"assists": {
+																"type": "string"
+															},
+															"goals": {
+																"type": "string"
+															},
+															"ownGoals": {
+																"type": "string"
+															},
+															"redCards": {
+																"type": "string"
+															},
+															"yellowCards": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"lineup": {
+													"type": "array",
+													"items": {
+														"type": "object",
+														"properties": {
+															"playerId": {
+																"type": "integer"
+															},
+															"assists": {
+																"type": "string"
+															},
+															"goals": {
+																"type": "string"
+															},
+															"ownGoals": {
+																"type": "string"
+															},
+															"redCards": {
+																"type": "string"
+															},
+															"yellowCards": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"substitutions": {
+													"type": "array",
+													"items": {
+														"type": "object",
+														"properties": {
+															"playerIn": {
+																"type": "integer"
+															},
+															"assists": {
+																"type": "string"
+															},
+															"playerOut": {
+																"type": "integer"
+															},
+															"minute": {
+																"type": "integer"
+															}
+														}
+													}
+												}
+											}
+										},
+										"scoreHT": {
+											"type": "integer"
+										}
+									}
+								},
+								"4418": {
+									"type": "object",
+									"properties": {
+										"scoreET": {
+											"type": "integer"
+										},
+										"coachId": {
+											"type": "integer"
+										},
+										"side": {
+											"type": "string"
+										},
+										"teamId": {
+											"type": "integer"
+										},
+										"score": {
+											"type": "integer"
+										},
+										"scoreP": {
+											"type": "integer"
+										},
+										"hasFormation": {
+											"type": "integer"
+										},
+										"formation": {
+											"type": "object",
+											"properties": {
+												"bench": {
+													"type": "array",
+													"items": {
+														"type": "object",
+														"properties": {
+															"playerId": {
+																"type": "integer"
+															},
+															"assists": {
+																"type": "string"
+															},
+															"goals": {
+																"type": "string"
+															},
+															"ownGoals": {
+																"type": "string"
+															},
+															"redCards": {
+																"type": "string"
+															},
+															"yellowCards": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"lineup": {
+													"type": "array",
+													"items": {
+														"type": "object",
+														"properties": {
+															"playerId": {
+																"type": "integer"
+															},
+															"assists": {
+																"type": "string"
+															},
+															"goals": {
+																"type": "string"
+															},
+															"ownGoals": {
+																"type": "string"
+															},
+															"redCards": {
+																"type": "string"
+															},
+															"yellowCards": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"substitutions": {
+													"type": "array",
+													"items": {
+														"type": "object",
+														"properties": {
+															"playerIn": {
+																"type": "integer"
+															},
+															"assists": {
+																"type": "string"
+															},
+															"playerOut": {
+																"type": "integer"
+															},
+															"minute": {
+																"type": "integer"
+															}
+														}
+													}
+												}
+											}
+										},
+										"scoreHT": {
+											"type": "integer"
+										}
+									}
+								},
+								"5629": {
+									"type": "object",
+									"properties": {
+										"scoreET": {
+											"type": "integer"
+										},
+										"coachId": {
+											"type": "integer"
+										},
+										"side": {
+											"type": "string"
+										},
+										"teamId": {
+											"type": "integer"
+										},
+										"score": {
+											"type": "integer"
+										},
+										"scoreP": {
+											"type": "integer"
+										},
+										"hasFormation": {
+											"type": "integer"
+										},
+										"formation": {
+											"type": "object",
+											"properties": {
+												"bench": {
+													"type": "array",
+													"items": {
+														"type": "object",
+														"properties": {
+															"playerId": {
+																"type": "integer"
+															},
+															"assists": {
+																"type": "string"
+															},
+															"goals": {
+																"type": "string"
+															},
+															"ownGoals": {
+																"type": "string"
+															},
+															"redCards": {
+																"type": "string"
+															},
+															"yellowCards": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"lineup": {
+													"type": "array",
+													"items": {
+														"type": "object",
+														"properties": {
+															"playerId": {
+																"type": "integer"
+															},
+															"assists": {
+																"type": "string"
+															},
+															"goals": {
+																"type": "string"
+															},
+															"ownGoals": {
+																"type": "string"
+															},
+															"redCards": {
+																"type": "string"
+															},
+															"yellowCards": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"substitutions": {
+													"type": "array",
+													"items": {
+														"type": "object",
+														"properties": {
+															"playerIn": {
+																"type": "integer"
+															},
+															"assists": {
+																"type": "string"
+															},
+															"playerOut": {
+																"type": "integer"
+															},
+															"minute": {
+																"type": "integer"
+															}
+														}
+													}
+												}
+											}
+										},
+										"scoreHT": {
+											"type": "integer"
+										}
+									}
+								},
+								"6380": {
+									"type": "object",
+									"properties": {
+										"scoreET": {
+											"type": "integer"
+										},
+										"coachId": {
+											"type": "integer"
+										},
+										"side": {
+											"type": "string"
+										},
+										"teamId": {
+											"type": "integer"
+										},
+										"score": {
+											"type": "integer"
+										},
+										"scoreP": {
+											"type": "integer"
+										},
+										"hasFormation": {
+											"type": "integer"
+										},
+										"formation": {
+											"type": "object",
+											"properties": {
+												"bench": {
+													"type": "array",
+													"items": {
+														"type": "object",
+														"properties": {
+															"playerId": {
+																"type": "integer"
+															},
+															"assists": {
+																"type": "string"
+															},
+															"goals": {
+																"type": "string"
+															},
+															"ownGoals": {
+																"type": "string"
+															},
+															"redCards": {
+																"type": "string"
+															},
+															"yellowCards": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"lineup": {
+													"type": "array",
+													"items": {
+														"type": "object",
+														"properties": {
+															"playerId": {
+																"type": "integer"
+															},
+															"assists": {
+																"type": "string"
+															},
+															"goals": {
+																"type": "string"
+															},
+															"ownGoals": {
+																"type": "string"
+															},
+															"redCards": {
+																"type": "string"
+															},
+															"yellowCards": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"substitutions": {
+													"type": "array",
+													"items": {
+														"type": "object",
+														"properties": {
+															"playerIn": {
+																"type": "integer"
+															},
+															"assists": {
+																"type": "string"
+															},
+															"playerOut": {
+																"type": "integer"
+															},
+															"minute": {
+																"type": "integer"
+															}
+														}
+													}
+												}
+											}
+										},
+										"scoreHT": {
+											"type": "integer"
+										}
+									}
+								},
+								"6697": {
+									"type": "object",
+									"properties": {
+										"scoreET": {
+											"type": "integer"
+										},
+										"coachId": {
+											"type": "integer"
+										},
+										"side": {
+											"type": "string"
+										},
+										"teamId": {
+											"type": "integer"
+										},
+										"score": {
+											"type": "integer"
+										},
+										"scoreP": {
+											"type": "integer"
+										},
+										"hasFormation": {
+											"type": "integer"
+										},
+										"formation": {
+											"type": "object",
+											"properties": {
+												"bench": {
+													"type": "array",
+													"items": {
+														"type": "object",
+														"properties": {
+															"playerId": {
+																"type": "integer"
+															},
+															"assists": {
+																"type": "string"
+															},
+															"goals": {
+																"type": "string"
+															},
+															"ownGoals": {
+																"type": "string"
+															},
+															"redCards": {
+																"type": "string"
+															},
+															"yellowCards": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"lineup": {
+													"type": "array",
+													"items": {
+														"type": "object",
+														"properties": {
+															"playerId": {
+																"type": "integer"
+															},
+															"assists": {
+																"type": "string"
+															},
+															"goals": {
+																"type": "string"
+															},
+															"ownGoals": {
+																"type": "string"
+															},
+															"redCards": {
+																"type": "string"
+															},
+															"yellowCards": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"substitutions": {
+													"type": "array",
+													"items": {
+														"type": "object",
+														"properties": {
+															"playerIn": {
+																"type": "integer"
+															},
+															"assists": {
+																"type": "string"
+															},
+															"playerOut": {
+																"type": "integer"
+															},
+															"minute": {
+																"type": "integer"
+															}
+														}
+													}
+												}
+											}
+										},
+										"scoreHT": {
+											"type": "integer"
+										}
+									}
+								},
+								"7047": {
+									"type": "object",
+									"properties": {
+										"scoreET": {
+											"type": "integer"
+										},
+										"coachId": {
+											"type": "integer"
+										},
+										"side": {
+											"type": "string"
+										},
+										"teamId": {
+											"type": "integer"
+										},
+										"score": {
+											"type": "integer"
+										},
+										"scoreP": {
+											"type": "integer"
+										},
+										"hasFormation": {
+											"type": "integer"
+										},
+										"formation": {
+											"type": "object",
+											"properties": {
+												"bench": {
+													"type": "array",
+													"items": {
+														"type": "object",
+														"properties": {
+															"playerId": {
+																"type": "integer"
+															},
+															"assists": {
+																"type": "string"
+															},
+															"goals": {
+																"type": "string"
+															},
+															"ownGoals": {
+																"type": "string"
+															},
+															"redCards": {
+																"type": "string"
+															},
+															"yellowCards": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"lineup": {
+													"type": "array",
+													"items": {
+														"type": "object",
+														"properties": {
+															"playerId": {
+																"type": "integer"
+															},
+															"assists": {
+																"type": "string"
+															},
+															"goals": {
+																"type": "string"
+															},
+															"ownGoals": {
+																"type": "string"
+															},
+															"redCards": {
+																"type": "string"
+															},
+															"yellowCards": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"substitutions": {
+													"type": "array",
+													"items": {
+														"type": "object",
+														"properties": {
+															"playerIn": {
+																"type": "integer"
+															},
+															"assists": {
+																"type": "string"
+															},
+															"playerOut": {
+																"type": "integer"
+															},
+															"minute": {
+																"type": "integer"
+															}
+														}
+													}
+												}
+											}
+										},
+										"scoreHT": {
+											"type": "integer"
+										}
+									}
+								},
+								"9598": {
+									"type": "object",
+									"properties": {
+										"scoreET": {
+											"type": "integer"
+										},
+										"coachId": {
+											"type": "integer"
+										},
+										"side": {
+											"type": "string"
+										},
+										"teamId": {
+											"type": "integer"
+										},
+										"score": {
+											"type": "integer"
+										},
+										"scoreP": {
+											"type": "integer"
+										},
+										"hasFormation": {
+											"type": "integer"
+										},
+										"formation": {
+											"type": "object",
+											"properties": {
+												"bench": {
+													"type": "array",
+													"items": {
+														"type": "object",
+														"properties": {
+															"playerId": {
+																"type": "integer"
+															},
+															"assists": {
+																"type": "string"
+															},
+															"goals": {
+																"type": "string"
+															},
+															"ownGoals": {
+																"type": "string"
+															},
+															"redCards": {
+																"type": "string"
+															},
+															"yellowCards": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"lineup": {
+													"type": "array",
+													"items": {
+														"type": "object",
+														"properties": {
+															"playerId": {
+																"type": "integer"
+															},
+															"assists": {
+																"type": "string"
+															},
+															"goals": {
+																"type": "string"
+															},
+															"ownGoals": {
+																"type": "string"
+															},
+															"redCards": {
+																"type": "string"
+															},
+															"yellowCards": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"substitutions": {
+													"type": "array",
+													"items": {
+														"type": "object",
+														"properties": {
+															"playerIn": {
+																"type": "integer"
+															},
+															"assists": {
+																"type": "string"
+															},
+															"playerOut": {
+																"type": "integer"
+															},
+															"minute": {
+																"type": "integer"
+															}
+														}
+													}
+												}
+											}
+										},
+										"scoreHT": {
+											"type": "integer"
+										}
+									}
+								},
+								"12430": {
+									"type": "object",
+									"properties": {
+										"scoreET": {
+											"type": "integer"
+										},
+										"coachId": {
+											"type": "integer"
+										},
+										"side": {
+											"type": "string"
+										},
+										"teamId": {
+											"type": "integer"
+										},
+										"score": {
+											"type": "integer"
+										},
+										"scoreP": {
+											"type": "integer"
+										},
+										"hasFormation": {
+											"type": "integer"
+										},
+										"formation": {
+											"type": "object",
+											"properties": {
+												"bench": {
+													"type": "array",
+													"items": {
+														"type": "object",
+														"properties": {
+															"playerId": {
+																"type": "integer"
+															},
+															"assists": {
+																"type": "string"
+															},
+															"goals": {
+																"type": "string"
+															},
+															"ownGoals": {
+																"type": "string"
+															},
+															"redCards": {
+																"type": "string"
+															},
+															"yellowCards": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"lineup": {
+													"type": "array",
+													"items": {
+														"type": "object",
+														"properties": {
+															"playerId": {
+																"type": "integer"
+															},
+															"assists": {
+																"type": "string"
+															},
+															"goals": {
+																"type": "string"
+															},
+															"ownGoals": {
+																"type": "string"
+															},
+															"redCards": {
+																"type": "string"
+															},
+															"yellowCards": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"substitutions": {
+													"type": "array",
+													"items": {
+														"type": "object",
+														"properties": {
+															"playerIn": {
+																"type": "integer"
+															},
+															"assists": {
+																"type": "string"
+															},
+															"playerOut": {
+																"type": "integer"
+															},
+															"minute": {
+																"type": "integer"
+															}
+														}
+													}
+												}
+											}
+										},
+										"scoreHT": {
+											"type": "integer"
+										}
+									}
+								},
+								"14358": {
+									"type": "object",
+									"properties": {
+										"scoreET": {
+											"type": "integer"
+										},
+										"coachId": {
+											"type": "integer"
+										},
+										"side": {
+											"type": "string"
+										},
+										"teamId": {
+											"type": "integer"
+										},
+										"score": {
+											"type": "integer"
+										},
+										"scoreP": {
+											"type": "integer"
+										},
+										"hasFormation": {
+											"type": "integer"
+										},
+										"formation": {
+											"type": "object",
+											"properties": {
+												"bench": {
+													"type": "array",
+													"items": {
+														"type": "object",
+														"properties": {
+															"playerId": {
+																"type": "integer"
+															},
+															"assists": {
+																"type": "string"
+															},
+															"goals": {
+																"type": "string"
+															},
+															"ownGoals": {
+																"type": "string"
+															},
+															"redCards": {
+																"type": "string"
+															},
+															"yellowCards": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"lineup": {
+													"type": "array",
+													"items": {
+														"type": "object",
+														"properties": {
+															"playerId": {
+																"type": "integer"
+															},
+															"assists": {
+																"type": "string"
+															},
+															"goals": {
+																"type": "string"
+															},
+															"ownGoals": {
+																"type": "string"
+															},
+															"redCards": {
+																"type": "string"
+															},
+															"yellowCards": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"substitutions": {
+													"type": "array",
+													"items": {
+														"type": "object",
+														"properties": {
+															"playerIn": {
+																"type": "integer"
+															},
+															"assists": {
+																"type": "string"
+															},
+															"playerOut": {
+																"type": "integer"
+															},
+															"minute": {
+																"type": "integer"
+															}
+														}
+													}
+												}
+											}
+										},
+										"scoreHT": {
+											"type": "integer"
+										}
+									}
+								},
+								"15670": {
+									"type": "object",
+									"properties": {
+										"scoreET": {
+											"type": "integer"
+										},
+										"coachId": {
+											"type": "integer"
+										},
+										"side": {
+											"type": "string"
+										},
+										"teamId": {
+											"type": "integer"
+										},
+										"score": {
+											"type": "integer"
+										},
+										"scoreP": {
+											"type": "integer"
+										},
+										"hasFormation": {
+											"type": "integer"
+										},
+										"formation": {
+											"type": "object",
+											"properties": {
+												"bench": {
+													"type": "array",
+													"items": {
+														"type": "object",
+														"properties": {
+															"playerId": {
+																"type": "integer"
+															},
+															"assists": {
+																"type": "string"
+															},
+															"goals": {
+																"type": "string"
+															},
+															"ownGoals": {
+																"type": "string"
+															},
+															"redCards": {
+																"type": "string"
+															},
+															"yellowCards": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"lineup": {
+													"type": "array",
+													"items": {
+														"type": "object",
+														"properties": {
+															"playerId": {
+																"type": "integer"
+															},
+															"assists": {
+																"type": "string"
+															},
+															"goals": {
+																"type": "string"
+															},
+															"ownGoals": {
+																"type": "string"
+															},
+															"redCards": {
+																"type": "string"
+															},
+															"yellowCards": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"substitutions": {
+													"type": "array",
+													"items": {
+														"type": "object",
+														"properties": {
+															"playerIn": {
+																"type": "integer"
+															},
+															"assists": {
+																"type": "string"
+															},
+															"playerOut": {
+																"type": "integer"
+															},
+															"minute": {
+																"type": "integer"
+															}
+														}
+													}
+												}
+											}
+										},
+										"scoreHT": {
+											"type": "integer"
+										}
+									}
+								}
+							}
+						},
+						"seasonId": {
+							"type": "integer"
+						},
+						"dateutc": {
+							"type": "string"
+						},
+						"winner": {
+							"type": "integer"
+						},
+						"venue": {
+							"type": "string"
+						},
+						"wyId": {
+							"type": "integer"
+						},
+						"label": {
+							"type": "string"
+						},
+						"date": {
+							"type": "string"
+						},
+						"groupName": {
+							"type": "string"
+						},
+						"referees": {
+							"type": "array",
+							"items": {
+								"type": "object",
+								"properties": {
+									"refereeId": {
+										"type": "integer"
+									},
+									"role": {
+										"type": "string"
+									}
+								}
+							}
+						},
+						"duration": {
+							"type": "string"
+						},
+						"competitionId": {
+							"type": "integer"
+						}
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/SourceDataset_f4e')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureBlobStorage1",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "Json",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"container": "soccermetrics"
+					}
+				},
+				"schema": {
+					"type": "object",
+					"properties": {
+						"wyId": {
+							"type": "integer"
+						},
+						"shortName": {
+							"type": "string"
+						},
+						"firstName": {
+							"type": "string"
+						},
+						"middleName": {
+							"type": "string"
+						},
+						"lastName": {
+							"type": "string"
+						},
+						"birthDate": {
+							"type": "string"
+						},
+						"birthArea": {
+							"type": "object",
+							"properties": {
+								"id": {
+									"type": "integer"
+								},
+								"alpha2code": {
+									"type": "string"
+								},
+								"alpha3code": {
+									"type": "string"
+								},
+								"name": {
+									"type": "string"
+								}
+							}
+						},
+						"passportArea": {
+							"type": "object",
+							"properties": {
+								"id": {
+									"type": "integer"
+								},
+								"alpha2code": {
+									"type": "string"
+								},
+								"alpha3code": {
+									"type": "string"
+								},
+								"name": {
+									"type": "string"
+								}
+							}
+						},
+						"currentTeamId": {
+							"type": "integer"
+						}
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/coaches')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureBlobStorage1",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "Json",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"fileName": "coaches.json",
+						"container": "soccermetrics"
+					}
+				},
+				"schema": {
+					"type": "object",
+					"properties": {
+						"wyId": {
+							"type": "integer"
+						},
+						"shortName": {
+							"type": "string"
+						},
+						"firstName": {
+							"type": "string"
+						},
+						"middleName": {
+							"type": "string"
+						},
+						"lastName": {
+							"type": "string"
+						},
+						"birthDate": {
+							"type": "string"
+						},
+						"birthArea": {
+							"type": "object",
+							"properties": {
+								"id": {
+									"type": "integer"
+								},
+								"alpha2code": {
+									"type": "string"
+								},
+								"alpha3code": {
+									"type": "string"
+								},
+								"name": {
+									"type": "string"
+								}
+							}
+						},
+						"passportArea": {
+							"type": "object",
+							"properties": {
+								"id": {
+									"type": "integer"
+								},
+								"alpha2code": {
+									"type": "string"
+								},
+								"alpha3code": {
+									"type": "string"
+								},
+								"name": {
+									"type": "string"
+								}
+							}
+						},
+						"currentTeamId": {
+							"type": "integer"
+						}
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/competitions')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureBlobStorage1",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "Json",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"fileName": "competitions.json",
+						"container": "soccermetrics"
+					}
+				},
+				"schema": {
+					"type": "object",
+					"properties": {
+						"name": {
+							"type": "string"
+						},
+						"wyId": {
+							"type": "integer"
+						},
+						"format": {
+							"type": "string"
+						},
+						"area": {
+							"type": "object",
+							"properties": {
+								"name": {
+									"type": "string"
+								},
+								"id": {
+									"type": "null"
+								},
+								"alpha3code": {
+									"type": "string"
+								},
+								"alpha2code": {
+									"type": "string"
+								}
+							}
+						},
+						"type": {
+							"type": "string"
+						}
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/eventid2name')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureBlobStorage1",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"fileName": "eventid2name.csv",
+						"container": "soccermetrics"
+					},
+					"columnDelimiter": ",",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": [
+					{
+						"name": "event",
+						"type": "String"
+					},
+					{
+						"name": "subevent",
+						"type": "String"
+					},
+					{
+						"name": "event_label",
+						"type": "String"
+					},
+					{
+						"name": "subevent_label",
+						"type": "String"
+					}
+				]
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/playerank')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureBlobStorage1",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "Json",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"fileName": "playerank.json",
+						"container": "soccermetrics"
+					}
+				},
+				"schema": {
+					"type": "object",
+					"properties": {
+						"goalScored": {
+							"type": "integer"
+						},
+						"playerankScore": {
+							"type": "number"
+						},
+						"matchId": {
+							"type": "integer"
+						},
+						"playerId": {
+							"type": "integer"
+						},
+						"roleCluster": {
+							"type": "string"
+						},
+						"minutesPlayed": {
+							"type": "integer"
+						}
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/players')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureBlobStorage1",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "Json",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"fileName": "players.json",
+						"container": "soccermetrics"
+					}
+				},
+				"schema": {
+					"type": "object",
+					"properties": {
+						"passportArea": {
+							"type": "object",
+							"properties": {
+								"name": {
+									"type": "string"
+								},
+								"id": {
+									"type": "string"
+								},
+								"alpha3code": {
+									"type": "string"
+								},
+								"alpha2code": {
+									"type": "string"
+								}
+							}
+						},
+						"weight": {
+							"type": "integer"
+						},
+						"firstName": {
+							"type": "string"
+						},
+						"middleName": {
+							"type": "string"
+						},
+						"lastName": {
+							"type": "string"
+						},
+						"currentTeamId": {
+							"type": "integer"
+						},
+						"birthDate": {
+							"type": "string"
+						},
+						"height": {
+							"type": "integer"
+						},
+						"role": {
+							"type": "object",
+							"properties": {
+								"code2": {
+									"type": "string"
+								},
+								"code3": {
+									"type": "string"
+								},
+								"name": {
+									"type": "string"
+								}
+							}
+						},
+						"birthArea": {
+							"type": "object",
+							"properties": {
+								"name": {
+									"type": "string"
+								},
+								"id": {
+									"type": "string"
+								},
+								"alpha3code": {
+									"type": "string"
+								},
+								"alpha2code": {
+									"type": "string"
+								}
+							}
+						},
+						"wyId": {
+							"type": "integer"
+						},
+						"foot": {
+							"type": "string"
+						},
+						"shortName": {
+							"type": "string"
+						},
+						"currentNationalTeamId": {
+							"type": "null"
+						}
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/referees')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureBlobStorage1",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "Json",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"fileName": "referees.json",
+						"container": "soccermetrics"
+					}
+				},
+				"schema": {
+					"type": "object",
+					"properties": {
+						"wyId": {
+							"type": "integer"
+						},
+						"shortName": {
+							"type": "string"
+						},
+						"firstName": {
+							"type": "string"
+						},
+						"middleName": {
+							"type": "string"
+						},
+						"lastName": {
+							"type": "string"
+						},
+						"birthDate": {
+							"type": "string"
+						},
+						"birthArea": {
+							"type": "object",
+							"properties": {
+								"id": {
+									"type": "integer"
+								},
+								"alpha2code": {
+									"type": "string"
+								},
+								"alpha3code": {
+									"type": "string"
+								},
+								"name": {
+									"type": "string"
+								}
+							}
+						},
+						"passportArea": {
+							"type": "object",
+							"properties": {
+								"id": {
+									"type": "integer"
+								},
+								"alpha2code": {
+									"type": "string"
+								},
+								"alpha3code": {
+									"type": "string"
+								},
+								"name": {
+									"type": "string"
+								}
+							}
+						}
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/sqleventid2names')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "soccer",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "AzureSqlTable",
+				"schema": [],
+				"typeProperties": {
+					"schema": "dbo",
+					"table": "devent2names"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/sqlplayerank')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "soccer",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "AzureSqlTable",
+				"schema": [],
+				"typeProperties": {
+					"schema": "dbo",
+					"table": "dplayerank"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/sqltag2names')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "soccer",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "AzureSqlTable",
+				"schema": [],
+				"typeProperties": {
+					"schema": "dbo",
+					"table": "dtag2names"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/tags2name')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureBlobStorage1",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"fileName": "tags2name.csv",
+						"container": "soccermetrics"
+					},
+					"columnDelimiter": ",",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": [
+					{
+						"name": "Tag",
+						"type": "String"
+					},
+					{
+						"name": "Label",
+						"type": "String"
+					},
+					{
+						"name": "Description",
+						"type": "String"
+					}
+				]
+			},
+			"dependsOn": []
+		}
+	]
+}

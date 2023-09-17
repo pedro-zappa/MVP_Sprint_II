@@ -1,0 +1,1479 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name",
+			"defaultValue": "pzappafactory"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "[concat(parameters('factoryName'), '/teams')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureBlobStorage1",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "Json",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"fileName": "teams.json",
+						"container": "soccermetrics"
+					}
+				},
+				"schema": {
+					"type": "object",
+					"properties": {
+						"city": {
+							"type": "string"
+						},
+						"name": {
+							"type": "string"
+						},
+						"wyId": {
+							"type": "integer"
+						},
+						"officialName": {
+							"type": "string"
+						},
+						"area": {
+							"type": "object",
+							"properties": {
+								"name": {
+									"type": "string"
+								},
+								"id": {
+									"type": "string"
+								},
+								"alpha3code": {
+									"type": "string"
+								},
+								"alpha2code": {
+									"type": "string"
+								}
+							}
+						},
+						"type": {
+							"type": "string"
+						}
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/tennisatp')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureBlobStorage1",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"fileName": "tennis_data.csv",
+						"container": "tennis-atp"
+					},
+					"columnDelimiter": ",",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": [
+					{
+						"name": "ATP",
+						"type": "String"
+					},
+					{
+						"name": "Location",
+						"type": "String"
+					},
+					{
+						"name": "Tournament",
+						"type": "String"
+					},
+					{
+						"name": "Date",
+						"type": "String"
+					},
+					{
+						"name": "Series",
+						"type": "String"
+					},
+					{
+						"name": "Court",
+						"type": "String"
+					},
+					{
+						"name": "Surface",
+						"type": "String"
+					},
+					{
+						"name": "Round",
+						"type": "String"
+					},
+					{
+						"name": "Best of",
+						"type": "String"
+					},
+					{
+						"name": "Winner",
+						"type": "String"
+					},
+					{
+						"name": "Loser",
+						"type": "String"
+					},
+					{
+						"name": "WRank",
+						"type": "String"
+					},
+					{
+						"name": "LRank",
+						"type": "String"
+					},
+					{
+						"name": "WPts",
+						"type": "String"
+					},
+					{
+						"name": "LPts",
+						"type": "String"
+					},
+					{
+						"name": "W1",
+						"type": "String"
+					},
+					{
+						"name": "L1",
+						"type": "String"
+					},
+					{
+						"name": "W2",
+						"type": "String"
+					},
+					{
+						"name": "L2",
+						"type": "String"
+					},
+					{
+						"name": "W3",
+						"type": "String"
+					},
+					{
+						"name": "L3",
+						"type": "String"
+					},
+					{
+						"name": "W4",
+						"type": "String"
+					},
+					{
+						"name": "L4",
+						"type": "String"
+					},
+					{
+						"name": "W5",
+						"type": "String"
+					},
+					{
+						"name": "L5",
+						"type": "String"
+					},
+					{
+						"name": "Wsets",
+						"type": "String"
+					},
+					{
+						"name": "Lsets",
+						"type": "String"
+					},
+					{
+						"name": "Comment",
+						"type": "String"
+					},
+					{
+						"name": "B365W",
+						"type": "String"
+					},
+					{
+						"name": "B365L",
+						"type": "String"
+					},
+					{
+						"name": "PSW",
+						"type": "String"
+					},
+					{
+						"name": "PSL",
+						"type": "String"
+					},
+					{
+						"name": "MaxW",
+						"type": "String"
+					},
+					{
+						"name": "MaxL",
+						"type": "String"
+					},
+					{
+						"name": "AvgW",
+						"type": "String"
+					},
+					{
+						"name": "AvgL",
+						"type": "String"
+					},
+					{
+						"name": "EXW",
+						"type": "String"
+					},
+					{
+						"name": "EXL",
+						"type": "String"
+					},
+					{
+						"name": "LBW",
+						"type": "String"
+					},
+					{
+						"name": "LBL",
+						"type": "String"
+					},
+					{
+						"name": "SJW",
+						"type": "String"
+					},
+					{
+						"name": "SJL",
+						"type": "String"
+					},
+					{
+						"name": "UBW",
+						"type": "String"
+					},
+					{
+						"name": "UBL",
+						"type": "String"
+					},
+					{
+						"name": "pl1_flag",
+						"type": "String"
+					},
+					{
+						"name": "pl1_year_pro",
+						"type": "String"
+					},
+					{
+						"name": "pl1_weight",
+						"type": "String"
+					},
+					{
+						"name": "pl1_height",
+						"type": "String"
+					},
+					{
+						"name": "pl1_hand",
+						"type": "String"
+					},
+					{
+						"name": "pl2_flag",
+						"type": "String"
+					},
+					{
+						"name": "pl2_year_pro",
+						"type": "String"
+					},
+					{
+						"name": "pl2_weight",
+						"type": "String"
+					},
+					{
+						"name": "pl2_height",
+						"type": "String"
+					},
+					{
+						"name": "pl2_hand",
+						"type": "String"
+					}
+				]
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/wcupevents')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureBlobStorage1",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "Json",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"fileName": "events_World_Cup.json",
+						"container": "soccermetrics"
+					}
+				},
+				"schema": {
+					"type": "object",
+					"properties": {
+						"eventId": {
+							"type": "integer"
+						},
+						"subEventName": {
+							"type": "string"
+						},
+						"tags": {
+							"type": "array",
+							"items": {
+								"type": "object",
+								"properties": {
+									"id": {
+										"type": "integer"
+									}
+								}
+							}
+						},
+						"playerId": {
+							"type": "integer"
+						},
+						"positions": {
+							"type": "array",
+							"items": {
+								"type": "object",
+								"properties": {
+									"y": {
+										"type": "integer"
+									},
+									"x": {
+										"type": "integer"
+									}
+								}
+							}
+						},
+						"matchId": {
+							"type": "integer"
+						},
+						"eventName": {
+							"type": "string"
+						},
+						"teamId": {
+							"type": "integer"
+						},
+						"matchPeriod": {
+							"type": "string"
+						},
+						"eventSec": {
+							"type": "number"
+						},
+						"subEventId": {
+							"type": "integer"
+						},
+						"id": {
+							"type": "integer"
+						}
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/CopyPipeline_f4e')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "Copy_f4e",
+						"type": "Copy",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [
+							{
+								"name": "Source",
+								"value": "soccermetrics//"
+							},
+							{
+								"name": "Destination",
+								"value": "Items"
+							}
+						],
+						"typeProperties": {
+							"source": {
+								"type": "JsonSource",
+								"storeSettings": {
+									"type": "AzureBlobStorageReadSettings",
+									"recursive": true,
+									"wildcardFileName": "*",
+									"enablePartitionDiscovery": false
+								},
+								"formatSettings": {
+									"type": "JsonReadSettings"
+								}
+							},
+							"sink": {
+								"type": "CosmosDbSqlApiSink",
+								"writeBehavior": "insert"
+							},
+							"enableStaging": false,
+							"validateDataConsistency": false
+						},
+						"inputs": [
+							{
+								"referenceName": "SourceDataset_f4e",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						],
+						"outputs": [
+							{
+								"referenceName": "DestinationDataset_f4e",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						]
+					}
+				],
+				"policy": {
+					"elapsedTimeMetric": {},
+					"cancelAfter": {}
+				},
+				"annotations": []
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/Banks')]",
+			"type": "Microsoft.DataFactory/factories/dataflows",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"type": "MappingDataFlow",
+				"typeProperties": {
+					"sources": [
+						{
+							"dataset": {
+								"referenceName": "BanksFailure",
+								"type": "DatasetReference"
+							},
+							"name": "BankList"
+						},
+						{
+							"dataset": {
+								"referenceName": "Institutions",
+								"type": "DatasetReference"
+							},
+							"name": "Institutions"
+						}
+					],
+					"sinks": [
+						{
+							"dataset": {
+								"referenceName": "AzureSqlTable12",
+								"type": "DatasetReference"
+							},
+							"name": "sink1"
+						},
+						{
+							"dataset": {
+								"referenceName": "AzureSqlTable13",
+								"type": "DatasetReference"
+							},
+							"name": "sink2"
+						}
+					],
+					"transformations": [
+						{
+							"name": "select1"
+						},
+						{
+							"name": "select2"
+						}
+					],
+					"scriptLines": [
+						"source(output(",
+						"          {Bank Name�} as string,",
+						"          {City�} as string,",
+						"          {State�} as string,",
+						"          {Cert�} as integer,",
+						"          {Acquiring Institution�} as string,",
+						"          {Closing Date�} as date,",
+						"          Fund as short",
+						"     ),",
+						"     allowSchemaDrift: false,",
+						"     validateSchema: true,",
+						"     ignoreNoFilesFound: false) ~> BankList",
+						"source(output(",
+						"          STNAME as string,",
+						"          CERT as short,",
+						"          DOCKET as short,",
+						"          ACTIVE as boolean,",
+						"          ADDRESS as string,",
+						"          ASSET as integer,",
+						"          BKCLASS as string,",
+						"          CHARTER as short,",
+						"          CHRTAGNT as string,",
+						"          CONSERVE as boolean,",
+						"          CITY as string,",
+						"          CLCODE as short,",
+						"          CMSA_NO as short,",
+						"          CMSA as string,",
+						"          COUNTY as string,",
+						"          DATEUPDT as date,",
+						"          DENOVO as boolean,",
+						"          DEP as integer,",
+						"          EFFDATE as date,",
+						"          ENDEFYMD as date,",
+						"          EQ as integer,",
+						"          ESTYMD as date,",
+						"          FDICDBS as short,",
+						"          FDICREGN as string,",
+						"          FDICSUPV as string,",
+						"          FED as short,",
+						"          FED_RSSD as integer,",
+						"          FEDCHRTR as boolean,",
+						"          FLDOFF as string,",
+						"          IBA as boolean,",
+						"          INACTIVE as boolean,",
+						"          INSAGNT1 as string,",
+						"          INSAGNT2 as string,",
+						"          INSDATE as date,",
+						"          INSTCRCD as boolean,",
+						"          INSBIF as boolean,",
+						"          INSCOML as boolean,",
+						"          INSDIF as boolean,",
+						"          INSFDIC as boolean,",
+						"          INSSAIF as boolean,",
+						"          INSSAVE as boolean,",
+						"          MSA_NO as short,",
+						"          MSA as string,",
+						"          NAME as string,",
+						"          NEWCERT as integer,",
+						"          OAKAR as boolean,",
+						"          OTSDIST as short,",
+						"          OTSREGNM as string,",
+						"          PROCDATE as date,",
+						"          QBPRCOML as short,",
+						"          REGAGNT as string,",
+						"          REPDTE as date,",
+						"          RISDATE as date,",
+						"          STCHRTR as boolean,",
+						"          ROA as double,",
+						"          ROAQ as double,",
+						"          ROE as double,",
+						"          ROEQ as double,",
+						"          RUNDATE as date,",
+						"          SASSER as boolean,",
+						"          LAW_SASSER_FLG as boolean,",
+						"          STALP as string,",
+						"          STCNTY as integer,",
+						"          STNUM as short,",
+						"          ZIP as integer,",
+						"          SUPRV_FD as short,",
+						"          OCCDIST as short,",
+						"          UNINUM as short,",
+						"          ULTCERT as integer,",
+						"          CFPBEFFDTE as date,",
+						"          CFPBENDDTE as date,",
+						"          CFPBFLAG as boolean,",
+						"          REGAGENT2 as string,",
+						"          TE01N528 as string,",
+						"          TE02N528 as string,",
+						"          TE03N528 as string,",
+						"          TE04N528 as string,",
+						"          TE05N528 as string,",
+						"          TE06N528 as string,",
+						"          TE07N528 as string,",
+						"          TE08N528 as string,",
+						"          TE09N528 as string,",
+						"          TE10N528 as string,",
+						"          TE01N529 as string,",
+						"          TE02N529 as string,",
+						"          TE03N529 as string,",
+						"          TE04N529 as string,",
+						"          TE05N529 as string,",
+						"          TE06N529 as string,",
+						"          WEBADDR as string,",
+						"          OFFICES as string,",
+						"          CERTCONS as string,",
+						"          PARCERT as short,",
+						"          CITYHCR as string,",
+						"          DEPDOM as integer,",
+						"          FORM31 as boolean,",
+						"          HCTMULT as boolean,",
+						"          INSTAG as boolean,",
+						"          MUTUAL as boolean,",
+						"          NAMEHCR as string,",
+						"          NETINC as integer,",
+						"          NETINCQ as integer,",
+						"          OFFDOM as short,",
+						"          OFFFOR as short,",
+						"          OFFOA as short,",
+						"          RSSDHCR as integer,",
+						"          STALPHCR as string,",
+						"          SUBCHAPS as boolean,",
+						"          ROAPTX as double,",
+						"          ROAPTXQ as double,",
+						"          TRUST as boolean,",
+						"          SPECGRP as short,",
+						"          SPECGRPN as string,",
+						"          TRACT as boolean,",
+						"          CSA as string,",
+						"          CSA_NO as short,",
+						"          CSA_FLG as boolean,",
+						"          CBSA as string,",
+						"          CBSA_NO as integer,",
+						"          CBSA_METRO_NAME as string,",
+						"          CBSA_METRO as integer,",
+						"          CBSA_METRO_FLG as boolean,",
+						"          CBSA_MICRO_FLG as boolean,",
+						"          CBSA_DIV as string,",
+						"          CBSA_DIV_NO as integer,",
+						"          CBSA_DIV_FLG as boolean,",
+						"          CB as boolean",
+						"     ),",
+						"     allowSchemaDrift: true,",
+						"     validateSchema: false,",
+						"     ignoreNoFilesFound: false) ~> Institutions",
+						"Institutions select(mapColumn(",
+						"          CERT,",
+						"          ACTIVE,",
+						"          ASSET,",
+						"          CITY,",
+						"          CITYHCR,",
+						"          DATEUPDT,",
+						"          DEP,",
+						"          DEPDOM,",
+						"          EQ,",
+						"          ESTYMD,",
+						"          NAME,",
+						"          NAMEHCR,",
+						"          HCTMULT,",
+						"          NETINC,",
+						"          NETINCQ,",
+						"          OFFDOM,",
+						"          OFFFOR,",
+						"          OFFICES,",
+						"          ROE,",
+						"          ROEQ",
+						"     ),",
+						"     skipDuplicateMapInputs: true,",
+						"     skipDuplicateMapOutputs: true) ~> select1",
+						"BankList select(mapColumn(",
+						"          BANKNAME = {Bank Name�},",
+						"          CITY = {City�},",
+						"          STATE = {State�},",
+						"          CERT = {Cert�},",
+						"          ACQUIRINGINST = {Acquiring Institution�},",
+						"          CLOSINGDATE = {Closing Date�},",
+						"          FUND = Fund",
+						"     ),",
+						"     skipDuplicateMapInputs: true,",
+						"     skipDuplicateMapOutputs: true) ~> select2",
+						"select1 sink(allowSchemaDrift: true,",
+						"     validateSchema: false,",
+						"     deletable:false,",
+						"     insertable:true,",
+						"     updateable:false,",
+						"     upsertable:false,",
+						"     format: 'table',",
+						"     skipDuplicateMapInputs: true,",
+						"     skipDuplicateMapOutputs: true,",
+						"     errorHandlingOption: 'stopOnFirstError') ~> sink1",
+						"select2 sink(allowSchemaDrift: true,",
+						"     validateSchema: false,",
+						"     deletable:false,",
+						"     insertable:true,",
+						"     updateable:false,",
+						"     upsertable:false,",
+						"     format: 'table',",
+						"     skipDuplicateMapInputs: true,",
+						"     skipDuplicateMapOutputs: true,",
+						"     errorHandlingOption: 'stopOnFirstError') ~> sink2"
+					]
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/dataflow1')]",
+			"type": "Microsoft.DataFactory/factories/dataflows",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"type": "MappingDataFlow",
+				"typeProperties": {
+					"sources": [
+						{
+							"dataset": {
+								"referenceName": "tennisatp",
+								"type": "DatasetReference"
+							},
+							"name": "source1"
+						}
+					],
+					"sinks": [
+						{
+							"dataset": {
+								"referenceName": "AzureSqlTable1",
+								"type": "DatasetReference"
+							},
+							"name": "sink1"
+						}
+					],
+					"transformations": [
+						{
+							"name": "select1"
+						}
+					],
+					"scriptLines": [
+						"source(output(",
+						"          ATP as short,",
+						"          Location as string,",
+						"          Tournament as string,",
+						"          Date as date,",
+						"          Series as string,",
+						"          Court as string,",
+						"          Surface as string,",
+						"          Round as string,",
+						"          {Best of} as short,",
+						"          Winner as string,",
+						"          Loser as string,",
+						"          WRank as double,",
+						"          LRank as double,",
+						"          WPts as double,",
+						"          LPts as double,",
+						"          W1 as double,",
+						"          L1 as double,",
+						"          W2 as double,",
+						"          L2 as double,",
+						"          W3 as double,",
+						"          L3 as double,",
+						"          W4 as double,",
+						"          L4 as double,",
+						"          W5 as double,",
+						"          L5 as double,",
+						"          Wsets as double,",
+						"          Lsets as double,",
+						"          Comment as string,",
+						"          B365W as double,",
+						"          B365L as double,",
+						"          PSW as double,",
+						"          PSL as double,",
+						"          MaxW as double,",
+						"          MaxL as double,",
+						"          AvgW as double,",
+						"          AvgL as double,",
+						"          EXW as string,",
+						"          EXL as string,",
+						"          LBW as string,",
+						"          LBL as string,",
+						"          SJW as string,",
+						"          SJL as string,",
+						"          UBW as string,",
+						"          UBL as string,",
+						"          pl1_flag as string,",
+						"          pl1_year_pro as double,",
+						"          pl1_weight as double,",
+						"          pl1_height as double,",
+						"          pl1_hand as string,",
+						"          pl2_flag as string,",
+						"          pl2_year_pro as double,",
+						"          pl2_weight as double,",
+						"          pl2_height as double,",
+						"          pl2_hand as string",
+						"     ),",
+						"     allowSchemaDrift: false,",
+						"     validateSchema: true,",
+						"     ignoreNoFilesFound: false) ~> source1",
+						"source1 select(mapColumn(",
+						"          ATP,",
+						"          Location,",
+						"          Tournament,",
+						"          Date,",
+						"          Series,",
+						"          Court,",
+						"          Surface,",
+						"          Round,",
+						"          {Best of},",
+						"          Winner,",
+						"          Loser,",
+						"          WRank,",
+						"          LRank,",
+						"          Wsets,",
+						"          Lsets,",
+						"          B365W,",
+						"          B365L,",
+						"          pl1_flag,",
+						"          pl1_year_pro,",
+						"          pl2_flag,",
+						"          pl2_year_pro,",
+						"          pl1_hand,",
+						"          pl2_hand",
+						"     ),",
+						"     skipDuplicateMapInputs: true,",
+						"     skipDuplicateMapOutputs: true) ~> select1",
+						"select1 sink(allowSchemaDrift: true,",
+						"     validateSchema: false,",
+						"     deletable:false,",
+						"     insertable:true,",
+						"     updateable:false,",
+						"     upsertable:false,",
+						"     format: 'table',",
+						"     skipDuplicateMapInputs: true,",
+						"     skipDuplicateMapOutputs: true,",
+						"     errorHandlingOption: 'stopOnFirstError') ~> sink1"
+					]
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/datasets/tennisatp')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/powerquery1')]",
+			"type": "Microsoft.DataFactory/factories/dataflows",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"type": "WranglingDataFlow",
+				"typeProperties": {
+					"sources": [
+						{
+							"name": "tennisatp",
+							"script": "source(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false) ~> tennisatp",
+							"dataset": {
+								"referenceName": "tennisatp",
+								"type": "DatasetReference"
+							}
+						}
+					],
+					"script": "section Section1;\r\nshared tennisatp = let AdfDoc = AzureStorage.BlobContents(\"https://pzappastorage.blob.core.windows.net/tennis-atp/tennis_data.csv\"),Csv = Csv.Document(AdfDoc, [Delimiter = \",\", Encoding = TextEncoding.Utf8, QuoteStyle = QuoteStyle.Csv]), PromotedHeaders = Table.PromoteHeaders(Csv, [PromoteAllScalars = true]) in  PromotedHeaders;\r\nshared UserQuery = let Source = #\"tennisatp\",\r\n  #\"Changed column type\" = Table.TransformColumnTypes(Source, {{\"Best of\", Int64.Type}, {\"W1\", Int64.Type}, {\"Lsets\", Int64.Type}, {\"Wsets\", Int64.Type}, {\"L5\", Int64.Type}, {\"W5\", Int64.Type}, {\"L4\", Int64.Type}, {\"W4\", Int64.Type}, {\"L3\", Int64.Type}, {\"W3\", Int64.Type}, {\"L2\", Int64.Type}, {\"W2\", Int64.Type}, {\"L1\", Int64.Type}, {\"LPts\", Int64.Type}, {\"WPts\", Int64.Type}, {\"LRank\", Int64.Type}, {\"WRank\", Int64.Type}, {\"B365W\", type number}, {\"B365L\", type number}, {\"PSW\", type number}, {\"PSL\", type number}, {\"MaxW\", type number}, {\"MaxL\", type number}, {\"AvgW\", type number}, {\"AvgL\", type number}, {\"EXW\", type number}, {\"EXL\", type number}, {\"LBW\", type number}, {\"LBL\", type number}, {\"SJW\", type number}, {\"SJL\", type number}, {\"UBW\", type number}, {\"UBL\", type number}, {\"pl1_year_pro\", Int64.Type}, {\"pl1_weight\", Int64.Type}, {\"pl1_height\", Int64.Type}, {\"pl2_year_pro\", Int64.Type}, {\"pl2_weight\", Int64.Type}, {\"pl2_height\", Int64.Type}}) in #\"Changed column type\";\r\n",
+					"documentLocale": "en-us"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/datasets/tennisatp')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/soccer')]",
+			"type": "Microsoft.DataFactory/factories/dataflows",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"type": "MappingDataFlow",
+				"typeProperties": {
+					"sources": [
+						{
+							"dataset": {
+								"referenceName": "DelimitedText8",
+								"type": "DatasetReference"
+							},
+							"name": "fwcupmaches",
+							"description": "This dataset describes all the matches made available. Each match is a document consisting of the following fields:\n\n- competitionId: the identifier of the competition to which the match belongs to. It is a integer and refers to the field \"wyId\" of the competition document;\n- date and dateutc: the former specifies date and time when the match starts in explicit format (e.g., May 20, 2018 at 8:45:00 PM GMT+2), the latter contains the same information but in the compact format YYYY-MM-DD hh:mm:ss;\n- duration: the duration of the match. It can be \"Regular\" (matches of regular duration of 90 minutes + stoppage time), \"ExtraTime\" (matches with supplementary times, as it may happen for matches in continental or international competitions), or \"Penalities\" (matches which end at penalty kicks, as it may happen for continental or international competitions);\n- gameweek: the week of the league, starting from the beginning of the league;\n- label: contains the name of the two clubs and the result of the match (e.g., \"Lazio - Internazionale, 2 - 3\");\n- roundID: indicates the match-day of the competition to which the match belongs to. During a competition for soccer clubs, each of the participating clubs plays against each of the other clubs twice, once at home and once away. The matches are organized in match-days: all the matches in match-day i are played before the matches in match-day i + 1, even tough some matches can be anticipated or postponed to facilitate players and clubs participating in Continental or Intercontinental competitions. During a competition for national teams, the \"roundID\" indicates the stage of the competition (eliminatory round, round of 16, quarter finals, semifinals, final);\n- seasonId: indicates the season of the match;\n- status: it can be \"Played\" (the match has officially finished), \"Cancelled\" (the match has been canceled for some reason), \"Postponed\" (the match has been postponed and no new date and time is available yet) or \"Suspended\" (the match has been suspended and no new date and time is available yet);\n- venue: the stadium where the match was held (e.g., \"Stadio Olimpico\");\n- winner: the identifier of the team which won the game, or 0 if the match ended with a draw;\n- wyId: the identifier of the match, assigned by Wyscout;\n- teamsData: it contains several subfields describing information about each team that is playing that match: such as lineup, bench composition, list of substitutions, coach and scores:\n- hasFormation: it has value 0 if no formation (lineups and benches) is present, and 1 otherwise;\n- score: the number of goals scored by the team during the match (not counting penalties);\n- scoreET: the number of goals scored by the team during the match, including the extra time (not counting penalties);\n- scoreHT: the number of goals scored by the team during the first half of the match;\n- scoreP: the total number of goals scored by the team after the penalties;\n- side: the team side in the match (it can be \"home\" or \"away\");\n- teamId: the identifier of the team;\n- coachId: the identifier of the team's coach;\n- bench: the list of the team's players that started the match in the bench and some basic statistics about their performance during the match (goals, own goals, cards);\n- lineup: the list of the team's players in the starting lineup and some basic statistics about their performance during the match (goals, own goals, cards);\n- substitutions: the list of team's substitutions during the match, describing the players involved and the minute of the substitution."
+						},
+						{
+							"dataset": {
+								"referenceName": "DelimitedText7",
+								"type": "DatasetReference"
+							},
+							"name": "fwcupevents",
+							"description": "This dataset describes all the events that occur during each match. Each event refers to a ball touch and contains the following information:\n\n- eventId: the identifier of the event's type. Each eventId is associated with an event name (see next point);\n- eventName: tteamIdhe name of the event's type. There are seven types of events: pass, foul, shot, duel, free kick, offside and touch;\n- subEventId: the identifier of the subevent's type. Each subEventId is associated with a subevent name (see next point);\n- subEventName: the name of the subevent's type. Each event type is associated with a different set of subevent types;\n- tags: a list of event tags, each one describes additional information about the event (e.g., accurate). Each event type is associated with a different set of tags;\n- eventSec: the time when the event occurs (in seconds since the beginning of the current half of the match);\n- id: a unique identifier of the event;\n- matchId: the identifier of the match the event refers to. The identifier refers to the field \"wyId\" in the match dataset;\n- matchPeriod: the period of the match. It can be \"1H\" (first half of the match), \"2H\" (second half of the match), \"E1\" (first extra time), \"E2\" (second extra time) or \"P\" (penalties time);\n- playerId: the identifier of the player who generated the event. The identifier refers to the field \"wyId\" in a player dataset;\n- positions: the origin and destination positions associated with the event. Each position is a pair of coordinates (x, y). The x and y coordinates are always in the range [0, 100] and indicate the percentage of the field from the perspective of the attacking team. In particular, the value of the x coordinate indicates the event's nearness (in percentage) to the opponent's goal, while the value of the y coordinates indicates the event's nearness (in percentage) to the right side of the field;\n- teamId: the identifier of the player's team. The identifier refers to the field \"wyId\" in the team dataset."
+						},
+						{
+							"dataset": {
+								"referenceName": "DelimitedText6",
+								"type": "DatasetReference"
+							},
+							"name": "dteams",
+							"description": "This dataset describes all the soccer teams in seven prominent soccer competitions (Italian, Spanish, German, French and English first divisions, World Cup 2018, European Cup 2016). It consists of the following fields:\n\n- city: the city where the team is located. For national teams it is the capital of the country;\n- name: the common name of the team;\n- area: information about the geographic area associated with the team;\n- wyId: the identifier of the team, assigned by Wyscout;\n- officialName: the official name of the team (e.g., Juventus FC);\n- type: the type of the team. It is \"club\" for teams in the competitions for clubs and \"national\" for the teams in international competitions;"
+						},
+						{
+							"dataset": {
+								"referenceName": "DelimitedText5",
+								"type": "DatasetReference"
+							},
+							"name": "dcompetitions",
+							"description": "This dataset describes seven major soccer competitions (Italian, Spanish, German, French, English first divisions, World cup 2018, European cup 2016). Each competition is a document consisting of the following fields:\n\narea: it denotes the geographic area associated with the league as a sub-document, using the ISO 3166-1 specification (https://www.iso.org/iso-3166-country-codes.html);\nformat: the format of the competition. All competitions for clubs have value \"Domestic league\". The competitions for national teams have value \"International cup\";\n- name: the official name of the competition (e.g., Italian first division, Spanish first division, World Cup, etc.);\n- type: the typology of the competition. It is \"club\" for the competitions for clubs and \"international\" for the competitions for national teams (World Cup 2018, European Cup 2016);\n- wyId: the unique identifier of the competition, assigned by Wyscout."
+						},
+						{
+							"dataset": {
+								"referenceName": "DelimitedText4",
+								"type": "DatasetReference"
+							},
+							"name": "dplayers",
+							"description": "This dataset describes all players of the teams playing in seven national and international soccer competitions (Italian, Spanish, French, German, English first divisions, World Cup 2018, European Cup 2016). Each competition consists of the following fields:\n\n- birthArea: geographic information about the player's birth area;\n- birthDate: the birth date of the player, in the format \"YYYY-MM-DD\";\n- currentNationalTeamId: the identifier of the national team where the players currently plays;\n- currentTeamId: the identifier of the team where the player plays for. The identifier refers to the field \"wyId\" in a team document;\n- firstName: the first name of the player;\n- lastName: the last name of the player;\n- foot: the preferred foot of the player;\n- height: the height of the player (in centimeters);\n- middleName: the middle name (if any) of the player;\n- passportArea: the geographic area associated with the player's current passport;\n- role: the main role of the player. It is a subdocument containing the role's name and two abbreviations of it;\n- shortName2: the short name of the player;\n- weight: the weight of the player (in kilograms);\n- wyId: the identifier of the player, assigned by Wyscout."
+						},
+						{
+							"dataset": {
+								"referenceName": "DelimitedText3",
+								"type": "DatasetReference"
+							},
+							"name": "dreferees",
+							"description": "The referees data set describes all referees in the national and international competitions we make available. It consists of the following fields:\n- wyId: the identifier of the referee, assigned by Wyscout.\n- shortName: the short name of the referee;\n- firstName: the first name of the referee;\n- middleName: the middle name (if any) of the referee;\n- lastName: the last name of the referee;\n- birthDate: the birth date of the referee, in the format \"YYYY-MM-DD\";\n- birthArea: geographic information about the referee's birth area;\n- passportArea: the geographic area associated with the referee's current passport;"
+						},
+						{
+							"dataset": {
+								"referenceName": "DelimitedText2",
+								"type": "DatasetReference"
+							},
+							"name": "dcoaches",
+							"description": "The coaches data set describes all coaches of the clubs and the national teams of the seven competitions we make available. It consists of the following fields:\n- wyId: the identifier of the coach, assigned by Wyscout.\n- shortName: the short name of the coach;\n- firstName: the first name of the coach;\n- middleName: the middle name (if any) of the coach;\n- lastName: the last name of the coach;\n- birthDate: the birth date of the coach, in the format \"YYYY-MM-DD\";\n- birthArea: geographic information about the coach's birth area;\n- passportArea: the geographic area associated with the referee's current passport;\n- currentTeamId: the identifier of the coach's team. The identifier refers to the field \"wyId\" in a team document."
+						},
+						{
+							"dataset": {
+								"referenceName": "DelimitedText1",
+								"type": "DatasetReference"
+							},
+							"name": "dplayerank",
+							"description": "The PlayeRank score of the players in the matches they played. The PlayeRank score indicate, in a range from 0 to 1, how good was that player in that match (0 unforgettably bad, 1 amazing). The score have been computed using the PlayeRank framework, if you use these data please cite the following paper: https://arxiv.org/abs/1802.04987.\n\nEach document in the json file has the following fields:\n\n- goalScored: the number of goals scored by the player in the match\n- playerankScore: the PlayeRank score of the player in the match\n- matchId: the identifier of the match\n- playerId: the identifier of the player\n- roleCluster: the role of player in the match, as computed by the PlayeRank framework\n- minutesPlayed: the minutes played by the player in the match"
+						},
+						{
+							"dataset": {
+								"referenceName": "tags2name",
+								"type": "DatasetReference"
+							},
+							"name": "dtags2names",
+							"description": "Mapping of tag identifiers to tag names."
+						},
+						{
+							"dataset": {
+								"referenceName": "eventid2name",
+								"type": "DatasetReference"
+							},
+							"name": "deventid2names",
+							"description": "Mapping of event identifiers to event names."
+						}
+					],
+					"sinks": [
+						{
+							"dataset": {
+								"referenceName": "AzureSqlTable2",
+								"type": "DatasetReference"
+							},
+							"name": "wcupmatches"
+						},
+						{
+							"dataset": {
+								"referenceName": "AzureSqlTable10",
+								"type": "DatasetReference"
+							},
+							"name": "wcupevents"
+						},
+						{
+							"dataset": {
+								"referenceName": "AzureSqlTable11",
+								"type": "DatasetReference"
+							},
+							"name": "teams"
+						},
+						{
+							"dataset": {
+								"referenceName": "AzureSqlTable8",
+								"type": "DatasetReference"
+							},
+							"name": "competitions"
+						},
+						{
+							"dataset": {
+								"referenceName": "AzureSqlTable7",
+								"type": "DatasetReference"
+							},
+							"name": "players"
+						},
+						{
+							"dataset": {
+								"referenceName": "AzureSqlTable6",
+								"type": "DatasetReference"
+							},
+							"name": "referee"
+						},
+						{
+							"dataset": {
+								"referenceName": "AzureSqlTable5",
+								"type": "DatasetReference"
+							},
+							"name": "coaches"
+						},
+						{
+							"dataset": {
+								"referenceName": "sqlplayerank",
+								"type": "DatasetReference"
+							},
+							"name": "playerank"
+						},
+						{
+							"dataset": {
+								"referenceName": "sqltag2names",
+								"type": "DatasetReference"
+							},
+							"name": "tag2names"
+						},
+						{
+							"dataset": {
+								"referenceName": "sqleventid2names",
+								"type": "DatasetReference"
+							},
+							"name": "eventid2names"
+						}
+					],
+					"transformations": [],
+					"scriptLines": [
+						"source(output(",
+						"          status as string,",
+						"          roundId as integer,",
+						"          gameweek as short,",
+						"          teamsData as string,",
+						"          seasonId as short,",
+						"          dateutc as timestamp,",
+						"          winner as short,",
+						"          venue as string,",
+						"          wyId as integer,",
+						"          label as string,",
+						"          date as string,",
+						"          groupName as string,",
+						"          referees as string,",
+						"          duration as string,",
+						"          competitionId as short,",
+						"          {team1.scoreET} as short,",
+						"          {team1.coachId} as integer,",
+						"          {team1.side} as string,",
+						"          {team1.teamId} as short,",
+						"          {team1.score} as short,",
+						"          {team1.scoreP} as short,",
+						"          {team1.hasFormation} as boolean,",
+						"          {team1.formation} as string,",
+						"          {team1.scoreHT} as short,",
+						"          {team1.formation.bench} as string,",
+						"          {team1.formation.lineup} as string,",
+						"          {team1.formation.substitutions} as string,",
+						"          {team2.scoreET} as short,",
+						"          {team2.coachId} as integer,",
+						"          {team2.side} as string,",
+						"          {team2.teamId} as short,",
+						"          {team2.score} as short,",
+						"          {team2.scoreP} as short,",
+						"          {team2.hasFormation} as boolean,",
+						"          {team2.formation} as string,",
+						"          {team2.scoreHT} as short,",
+						"          {team2.formation.bench} as string,",
+						"          {team2.formation.lineup} as string,",
+						"          {team2.formation.substitutions} as string",
+						"     ),",
+						"     allowSchemaDrift: true,",
+						"     validateSchema: false,",
+						"     limit: 100,",
+						"     ignoreNoFilesFound: false) ~> fwcupmaches",
+						"source(output(",
+						"          eventId as short,",
+						"          subEventName as string,",
+						"          tags as string,",
+						"          playerId as integer,",
+						"          positions as string,",
+						"          matchId as integer,",
+						"          eventName as string,",
+						"          teamId as short,",
+						"          matchPeriod as string,",
+						"          eventSec as double,",
+						"          subEventId as double,",
+						"          id as integer,",
+						"          tagsList as string,",
+						"          pos_orig_y as short,",
+						"          pos_orig_x as short,",
+						"          pos_dest_y as short,",
+						"          pos_dest_x as short",
+						"     ),",
+						"     allowSchemaDrift: true,",
+						"     validateSchema: false,",
+						"     ignoreNoFilesFound: false) ~> fwcupevents",
+						"source(output(",
+						"          city as string,",
+						"          name as string,",
+						"          wyId as short,",
+						"          officialName as string,",
+						"          area as string,",
+						"          type as string",
+						"     ),",
+						"     allowSchemaDrift: true,",
+						"     validateSchema: false,",
+						"     ignoreNoFilesFound: false) ~> dteams",
+						"source(output(",
+						"          name as string,",
+						"          wyId as short,",
+						"          format as string,",
+						"          area as string,",
+						"          type as string",
+						"     ),",
+						"     allowSchemaDrift: true,",
+						"     validateSchema: false,",
+						"     ignoreNoFilesFound: false) ~> dcompetitions",
+						"source(output(",
+						"          passportArea as string,",
+						"          weight as string,",
+						"          firstName as string,",
+						"          middleName as string,",
+						"          lastName as string,",
+						"          currentTeamId as string,",
+						"          birthDate as date,",
+						"          height as string,",
+						"          role as string,",
+						"          birthArea as string,",
+						"          wyId as string,",
+						"          foot as string,",
+						"          shortName as string,",
+						"          currentNationalTeamId as string",
+						"     ),",
+						"     allowSchemaDrift: true,",
+						"     validateSchema: false,",
+						"     ignoreNoFilesFound: false) ~> dplayers",
+						"source(output(",
+						"          wyId as integer,",
+						"          shortName as string,",
+						"          firstName as string,",
+						"          middleName as string,",
+						"          lastName as string,",
+						"          birthDate as date,",
+						"          {birthArea.id} as short,",
+						"          {birthArea.alpha2code} as string,",
+						"          {birthArea.alpha3code} as string,",
+						"          {birthArea.name} as string,",
+						"          {passportArea.id} as short,",
+						"          {passportArea.alpha2code} as string,",
+						"          {passportArea.alpha3code} as string,",
+						"          {passportArea.name} as string",
+						"     ),",
+						"     allowSchemaDrift: true,",
+						"     validateSchema: false,",
+						"     ignoreNoFilesFound: false) ~> dreferees",
+						"source(output(",
+						"          wyId as integer,",
+						"          shortName as string,",
+						"          firstName as string,",
+						"          middleName as string,",
+						"          lastName as string,",
+						"          birthDate as date,",
+						"          birthArea as string,",
+						"          passportArea as string,",
+						"          currentTeamId as integer",
+						"     ),",
+						"     allowSchemaDrift: true,",
+						"     validateSchema: false,",
+						"     ignoreNoFilesFound: false) ~> dcoaches",
+						"source(output(",
+						"          goalScored as short,",
+						"          playerankScore as double,",
+						"          matchId as integer,",
+						"          playerId as integer,",
+						"          roleCluster as string,",
+						"          minutesPlayed as short",
+						"     ),",
+						"     allowSchemaDrift: true,",
+						"     validateSchema: false,",
+						"     ignoreNoFilesFound: false) ~> dplayerank",
+						"source(output(",
+						"          Tag as short,",
+						"          Label as string,",
+						"          Description as string",
+						"     ),",
+						"     allowSchemaDrift: true,",
+						"     validateSchema: false,",
+						"     ignoreNoFilesFound: false) ~> dtags2names",
+						"source(output(",
+						"          event as short,",
+						"          subevent as short,",
+						"          event_label as string,",
+						"          subevent_label as string",
+						"     ),",
+						"     allowSchemaDrift: true,",
+						"     validateSchema: false,",
+						"     ignoreNoFilesFound: false) ~> deventid2names",
+						"fwcupmaches sink(allowSchemaDrift: true,",
+						"     validateSchema: false,",
+						"     deletable:false,",
+						"     insertable:true,",
+						"     updateable:false,",
+						"     upsertable:false,",
+						"     format: 'table',",
+						"     skipDuplicateMapInputs: true,",
+						"     skipDuplicateMapOutputs: true,",
+						"     errorHandlingOption: 'stopOnFirstError') ~> wcupmatches",
+						"fwcupevents sink(allowSchemaDrift: true,",
+						"     validateSchema: false,",
+						"     deletable:false,",
+						"     insertable:true,",
+						"     updateable:false,",
+						"     upsertable:false,",
+						"     format: 'table',",
+						"     skipDuplicateMapInputs: true,",
+						"     skipDuplicateMapOutputs: true,",
+						"     errorHandlingOption: 'stopOnFirstError') ~> wcupevents",
+						"dteams sink(allowSchemaDrift: true,",
+						"     validateSchema: false,",
+						"     deletable:false,",
+						"     insertable:true,",
+						"     updateable:false,",
+						"     upsertable:false,",
+						"     format: 'table',",
+						"     skipDuplicateMapInputs: true,",
+						"     skipDuplicateMapOutputs: true,",
+						"     errorHandlingOption: 'stopOnFirstError') ~> teams",
+						"dcompetitions sink(allowSchemaDrift: true,",
+						"     validateSchema: false,",
+						"     deletable:false,",
+						"     insertable:true,",
+						"     updateable:false,",
+						"     upsertable:false,",
+						"     format: 'table',",
+						"     skipDuplicateMapInputs: true,",
+						"     skipDuplicateMapOutputs: true,",
+						"     errorHandlingOption: 'stopOnFirstError') ~> competitions",
+						"dplayers sink(allowSchemaDrift: true,",
+						"     validateSchema: false,",
+						"     deletable:false,",
+						"     insertable:true,",
+						"     updateable:false,",
+						"     upsertable:false,",
+						"     format: 'table',",
+						"     skipDuplicateMapInputs: true,",
+						"     skipDuplicateMapOutputs: true,",
+						"     errorHandlingOption: 'stopOnFirstError') ~> players",
+						"dreferees sink(allowSchemaDrift: true,",
+						"     validateSchema: false,",
+						"     deletable:false,",
+						"     insertable:true,",
+						"     updateable:false,",
+						"     upsertable:false,",
+						"     format: 'table',",
+						"     skipDuplicateMapInputs: true,",
+						"     skipDuplicateMapOutputs: true,",
+						"     errorHandlingOption: 'stopOnFirstError') ~> referee",
+						"dcoaches sink(allowSchemaDrift: true,",
+						"     validateSchema: false,",
+						"     deletable:false,",
+						"     insertable:true,",
+						"     updateable:false,",
+						"     upsertable:false,",
+						"     format: 'table',",
+						"     skipDuplicateMapInputs: true,",
+						"     skipDuplicateMapOutputs: true,",
+						"     errorHandlingOption: 'stopOnFirstError') ~> coaches",
+						"dplayerank sink(allowSchemaDrift: true,",
+						"     validateSchema: false,",
+						"     deletable:false,",
+						"     insertable:true,",
+						"     updateable:false,",
+						"     upsertable:false,",
+						"     format: 'table',",
+						"     skipDuplicateMapInputs: true,",
+						"     skipDuplicateMapOutputs: true,",
+						"     errorHandlingOption: 'stopOnFirstError') ~> playerank",
+						"dtags2names sink(allowSchemaDrift: true,",
+						"     validateSchema: false,",
+						"     deletable:false,",
+						"     insertable:true,",
+						"     updateable:false,",
+						"     upsertable:false,",
+						"     format: 'table',",
+						"     skipDuplicateMapInputs: true,",
+						"     skipDuplicateMapOutputs: true,",
+						"     errorHandlingOption: 'stopOnFirstError') ~> tag2names",
+						"deventid2names sink(allowSchemaDrift: true,",
+						"     validateSchema: false,",
+						"     deletable:false,",
+						"     insertable:true,",
+						"     updateable:false,",
+						"     upsertable:false,",
+						"     format: 'table',",
+						"     skipDuplicateMapInputs: true,",
+						"     skipDuplicateMapOutputs: true,",
+						"     errorHandlingOption: 'stopOnFirstError') ~> eventid2names"
+					]
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/pipeline1')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "dataflow1",
+						"type": "ExecuteDataFlow",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"dataflow": {
+								"referenceName": "dataflow1",
+								"type": "DataFlowReference",
+								"parameters": {},
+								"datasetParameters": {
+									"source1": {},
+									"sink1": {}
+								}
+							},
+							"staging": {},
+							"compute": {
+								"coreCount": 8,
+								"computeType": "General"
+							},
+							"traceLevel": "Fine"
+						}
+					}
+				],
+				"policy": {
+					"elapsedTimeMetric": {},
+					"cancelAfter": {}
+				},
+				"annotations": [],
+				"lastPublishTime": "2023-09-14T00:18:26Z"
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/dataflows/dataflow1')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/pipeline2')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "soccer",
+						"type": "ExecuteDataFlow",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"dataflow": {
+								"referenceName": "soccer",
+								"type": "DataFlowReference",
+								"parameters": {},
+								"datasetParameters": {
+									"fwcupmaches": {},
+									"fwcupevents": {},
+									"dteams": {},
+									"dcompetitions": {},
+									"dplayers": {},
+									"dreferees": {},
+									"dcoaches": {},
+									"dplayerank": {},
+									"dtags2names": {},
+									"deventid2names": {},
+									"wcupmatches": {},
+									"wcupevents": {},
+									"teams": {},
+									"competitions": {},
+									"players": {},
+									"referee": {},
+									"coaches": {},
+									"playerank": {},
+									"tag2names": {},
+									"eventid2names": {}
+								}
+							},
+							"staging": {},
+							"compute": {
+								"coreCount": 8,
+								"computeType": "General"
+							},
+							"traceLevel": "Fine"
+						}
+					}
+				],
+				"policy": {
+					"elapsedTimeMetric": {},
+					"cancelAfter": {}
+				},
+				"annotations": [],
+				"lastPublishTime": "2023-09-17T01:43:07Z"
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/dataflows/soccer')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/pipeline3')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "Banks",
+						"type": "ExecuteDataFlow",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"dataflow": {
+								"referenceName": "Banks",
+								"type": "DataFlowReference",
+								"parameters": {},
+								"datasetParameters": {
+									"BankList": {},
+									"Institutions": {},
+									"sink1": {},
+									"sink2": {}
+								}
+							},
+							"staging": {},
+							"compute": {
+								"coreCount": 8,
+								"computeType": "General"
+							},
+							"traceLevel": "Fine"
+						}
+					}
+				],
+				"policy": {
+					"elapsedTimeMetric": {},
+					"cancelAfter": {}
+				},
+				"annotations": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/dataflows/Banks')]"
+			]
+		}
+	]
+}
