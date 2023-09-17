@@ -294,7 +294,12 @@
 				"     format: 'table',",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true,",
-				"     errorHandlingOption: 'stopOnFirstError') ~> sink3"
+				"     errorHandlingOption: 'stopOnFirstError',",
+				"     mapColumn(",
+				"          CERT,",
+				"          FAILDATE,",
+				"          RESTYPE",
+				"     )) ~> sink3"
 			]
 		}
 	}
