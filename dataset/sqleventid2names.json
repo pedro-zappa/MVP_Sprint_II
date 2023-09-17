@@ -1,0 +1,16 @@
+{
+	"name": "sqleventid2names",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "soccer",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "devent2names"
+		}
+	}
+}

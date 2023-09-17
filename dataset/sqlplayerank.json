@@ -1,0 +1,16 @@
+{
+	"name": "sqlplayerank",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "soccer",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "dplayerank"
+		}
+	}
+}
