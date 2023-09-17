@@ -1,0 +1,36 @@
+{
+	"name": "DelimitedText10",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureBlobStorage1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "institutions_definitions.csv",
+				"container": "financialinstitutions"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "Variable Name",
+				"type": "String"
+			},
+			{
+				"name": "Variable Label",
+				"type": "String"
+			},
+			{
+				"name": "Variable Definition",
+				"type": "String"
+			}
+		]
+	}
+}
