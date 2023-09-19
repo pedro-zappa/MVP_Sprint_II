@@ -1434,6 +1434,211 @@
 			]
 		},
 		{
+			"name": "[concat(parameters('factoryName'), '/Banks_copy1')]",
+			"type": "Microsoft.DataFactory/factories/dataflows",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"type": "MappingDataFlow",
+				"typeProperties": {
+					"sources": [
+						{
+							"dataset": {
+								"referenceName": "Institutions",
+								"type": "DatasetReference"
+							},
+							"name": "Institutions"
+						}
+					],
+					"sinks": [
+						{
+							"dataset": {
+								"referenceName": "AzureSqlTable12",
+								"type": "DatasetReference"
+							},
+							"name": "sink1"
+						}
+					],
+					"transformations": [
+						{
+							"name": "select1"
+						}
+					],
+					"scriptLines": [
+						"source(output(",
+						"          STNAME as string,",
+						"          CERT as short,",
+						"          DOCKET as short,",
+						"          ACTIVE as boolean,",
+						"          ADDRESS as string,",
+						"          ASSET as integer,",
+						"          BKCLASS as string,",
+						"          CHARTER as short,",
+						"          CHRTAGNT as string,",
+						"          CONSERVE as boolean,",
+						"          CITY as string,",
+						"          CLCODE as short,",
+						"          CMSA_NO as short,",
+						"          CMSA as string,",
+						"          COUNTY as string,",
+						"          DATEUPDT as string,",
+						"          DENOVO as boolean,",
+						"          DEP as integer,",
+						"          EFFDATE as string,",
+						"          ENDEFYMD as string,",
+						"          EQ as integer,",
+						"          ESTYMD as string,",
+						"          FDICDBS as short,",
+						"          FDICREGN as string,",
+						"          FDICSUPV as string,",
+						"          FED as short,",
+						"          FED_RSSD as integer,",
+						"          FEDCHRTR as boolean,",
+						"          FLDOFF as string,",
+						"          IBA as boolean,",
+						"          INACTIVE as boolean,",
+						"          INSAGNT1 as string,",
+						"          INSAGNT2 as string,",
+						"          INSDATE as string,",
+						"          INSTCRCD as boolean,",
+						"          INSBIF as boolean,",
+						"          INSCOML as boolean,",
+						"          INSDIF as boolean,",
+						"          INSFDIC as boolean,",
+						"          INSSAIF as boolean,",
+						"          INSSAVE as boolean,",
+						"          MSA_NO as short,",
+						"          MSA as string,",
+						"          NAME as string,",
+						"          NEWCERT as integer,",
+						"          OAKAR as boolean,",
+						"          OTSDIST as short,",
+						"          OTSREGNM as string,",
+						"          PROCDATE as string,",
+						"          QBPRCOML as short,",
+						"          REGAGNT as string,",
+						"          REPDTE as string,",
+						"          RISDATE as string,",
+						"          STCHRTR as boolean,",
+						"          ROA as double,",
+						"          ROAQ as double,",
+						"          ROE as double,",
+						"          ROEQ as double,",
+						"          RUNDATE as string,",
+						"          SASSER as boolean,",
+						"          LAW_SASSER_FLG as boolean,",
+						"          STALP as string,",
+						"          STCNTY as integer,",
+						"          STNUM as short,",
+						"          ZIP as integer,",
+						"          SUPRV_FD as short,",
+						"          OCCDIST as short,",
+						"          UNINUM as short,",
+						"          ULTCERT as integer,",
+						"          CFPBEFFDTE as string,",
+						"          CFPBENDDTE as string,",
+						"          CFPBFLAG as boolean,",
+						"          REGAGENT2 as string,",
+						"          TE01N528 as string,",
+						"          TE02N528 as string,",
+						"          TE03N528 as string,",
+						"          TE04N528 as string,",
+						"          TE05N528 as string,",
+						"          TE06N528 as string,",
+						"          TE07N528 as string,",
+						"          TE08N528 as string,",
+						"          TE09N528 as string,",
+						"          TE10N528 as string,",
+						"          TE01N529 as string,",
+						"          TE02N529 as string,",
+						"          TE03N529 as string,",
+						"          TE04N529 as string,",
+						"          TE05N529 as string,",
+						"          TE06N529 as string,",
+						"          WEBADDR as string,",
+						"          OFFICES as string,",
+						"          CERTCONS as string,",
+						"          PARCERT as short,",
+						"          CITYHCR as string,",
+						"          DEPDOM as integer,",
+						"          FORM31 as boolean,",
+						"          HCTMULT as boolean,",
+						"          INSTAG as boolean,",
+						"          MUTUAL as boolean,",
+						"          NAMEHCR as string,",
+						"          NETINC as integer,",
+						"          NETINCQ as integer,",
+						"          OFFDOM as short,",
+						"          OFFFOR as short,",
+						"          OFFOA as short,",
+						"          RSSDHCR as integer,",
+						"          STALPHCR as string,",
+						"          SUBCHAPS as boolean,",
+						"          ROAPTX as double,",
+						"          ROAPTXQ as double,",
+						"          TRUST as boolean,",
+						"          SPECGRP as short,",
+						"          SPECGRPN as string,",
+						"          TRACT as boolean,",
+						"          CSA as string,",
+						"          CSA_NO as short,",
+						"          CSA_FLG as boolean,",
+						"          CBSA as string,",
+						"          CBSA_NO as integer,",
+						"          CBSA_METRO_NAME as string,",
+						"          CBSA_METRO as integer,",
+						"          CBSA_METRO_FLG as boolean,",
+						"          CBSA_MICRO_FLG as boolean,",
+						"          CBSA_DIV as string,",
+						"          CBSA_DIV_NO as integer,",
+						"          CBSA_DIV_FLG as boolean,",
+						"          CB as boolean",
+						"     ),",
+						"     allowSchemaDrift: true,",
+						"     validateSchema: false,",
+						"     ignoreNoFilesFound: false) ~> Institutions",
+						"Institutions select(mapColumn(",
+						"          CERT,",
+						"          ACTIVE,",
+						"          ASSET,",
+						"          CITY,",
+						"          CITYHCR,",
+						"          DATEUPDT,",
+						"          DEP,",
+						"          DEPDOM,",
+						"          EQ,",
+						"          ESTYMD,",
+						"          NAME,",
+						"          NAMEHCR,",
+						"          HCTMULT,",
+						"          NETINC,",
+						"          NETINCQ,",
+						"          OFFDOM,",
+						"          OFFFOR,",
+						"          OFFICES,",
+						"          ROE,",
+						"          ROEQ,",
+						"          ZIP,",
+						"          STNAME,",
+						"          STNUM",
+						"     ),",
+						"     skipDuplicateMapInputs: true,",
+						"     skipDuplicateMapOutputs: true) ~> select1",
+						"select1 sink(allowSchemaDrift: true,",
+						"     validateSchema: false,",
+						"     deletable:false,",
+						"     insertable:true,",
+						"     updateable:false,",
+						"     upsertable:false,",
+						"     format: 'table',",
+						"     skipDuplicateMapInputs: true,",
+						"     skipDuplicateMapOutputs: true,",
+						"     errorHandlingOption: 'stopOnFirstError') ~> sink1"
+					]
+				}
+			},
+			"dependsOn": []
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/pipeline1')]",
 			"type": "Microsoft.DataFactory/factories/pipelines",
 			"apiVersion": "2018-06-01",
@@ -1596,6 +1801,53 @@
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/dataflows/Banks')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/pipeline4')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "Banks_copy1",
+						"type": "ExecuteDataFlow",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"dataflow": {
+								"referenceName": "Banks_copy1",
+								"type": "DataFlowReference",
+								"parameters": {},
+								"datasetParameters": {
+									"Institutions": {},
+									"sink1": {}
+								}
+							},
+							"staging": {},
+							"compute": {
+								"coreCount": 8,
+								"computeType": "General"
+							},
+							"traceLevel": "Fine"
+						}
+					}
+				],
+				"policy": {
+					"elapsedTimeMetric": {},
+					"cancelAfter": {}
+				},
+				"annotations": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/dataflows/Banks_copy1')]"
 			]
 		}
 	]
